@@ -1413,15 +1413,7 @@ func (g *Generator) generateImports() {
 	} else {
 		g.PrintImport(GoPackageName(g.Pkg["proto"]), GoImportPath(g.ImportPrefix)+GoImportPath("github.com/golang/protobuf/proto"))
 	}
-	importsOrder := make([]GoImportPath, 0, len(imports))
-	for importPath := range imports {
-		importsOrder = append(importsOrder, importPath)
-	}
-	sort.Slice(importsOrder, func(i, j int) bool {
-		return importsOrder[i] < importsOrder[j]
-	})
-	for _, importPath := range importsOrder {
-		packageName := imports[importPath]
+	for importPath, packageName := range imports {
 		g.P(packageName, " ", GoImportPath(g.ImportPrefix)+importPath)
 	}
 	// Custom gogo imports
@@ -1529,6 +1521,28 @@ func (g *Generator) generateEnum(enum *EnumDescriptor) {
 	g.Out()
 	g.P("}")
 	g.P()
+
+	if gogoproto.EnabledGoEnumAlias(enum.file.FileDescriptorProto, enum.EnumDescriptorProto) {
+		g.P("var ", ccTypeName, "_alias = map[int32]string{")
+		g.In()
+		generated := make(map[int32]bool) // avoid duplicate values
+		for _, e := range enum.Value {
+			duplicate := ""
+			if _, present := generated[*e.Number]; present {
+				duplicate = "// Duplicate value: "
+			}
+			if gogoproto.IsEnumAliasCustomName(e) {
+				g.P(duplicate, e.Number, ": ", strconv.Quote(gogoproto.GetEnumAliasCustomName(e)), ",")
+			} else {
+				g.P(duplicate, e.Number, ": ", strconv.Quote(*e.Name), ",")
+			}
+			generated[*e.Number] = true
+		}
+		g.Out()
+		g.P("}")
+	}
+	g.P()
+
 	g.P("var ", ccTypeName, "_value = map[string]int32{")
 	g.In()
 	for _, e := range enum.Value {
@@ -1553,6 +1567,19 @@ func (g *Generator) generateEnum(enum *EnumDescriptor) {
 		g.P("func (x ", ccTypeName, ") String() string {")
 		g.In()
 		g.P("return ", g.Pkg["proto"], ".EnumName(", ccTypeName, "_name, int32(x))")
+		g.Out()
+		g.P("}")
+		g.P()
+	}
+
+	if gogoproto.EnabledGoEnumAlias(enum.file.FileDescriptorProto, enum.EnumDescriptorProto) {
+		g.P("func (x ", ccTypeName, ") StringAlias() string {")
+		g.In()
+		g.P("s,ok := ", ccTypeName, "_alias[int32(x)]")
+		g.P("if ok {")
+		g.P("return s")
+		g.P("}")
+		g.P("return strconv.Itoa(int(x))")
 		g.Out()
 		g.P("}")
 		g.P()

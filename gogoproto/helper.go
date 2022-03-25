@@ -223,6 +223,14 @@ func IsEnumValueCustomName(field *google_protobuf.EnumValueDescriptorProto) bool
 	return false
 }
 
+func IsEnumAliasCustomName(field *google_protobuf.EnumValueDescriptorProto) bool {
+	name := GetEnumAliasCustomName(field)
+	if len(name) > 0 {
+		return true
+	}
+	return false
+}
+
 func GetCustomName(field *google_protobuf.FieldDescriptorProto) string {
 	if field == nil {
 		return ""
@@ -262,6 +270,19 @@ func GetEnumValueCustomName(field *google_protobuf.EnumValueDescriptorProto) str
 	return ""
 }
 
+func GetEnumAliasCustomName(field *google_protobuf.EnumValueDescriptorProto) string {
+	if field == nil {
+		return ""
+	}
+	if field.Options != nil {
+		v, err := proto.GetExtension(field.Options,E_EnumaliasCustomname)
+		if err == nil && v.(*string) != nil {
+			return *(v.(*string))
+		}
+	}
+	return ""
+}
+
 func GetJsonTag(field *google_protobuf.FieldDescriptorProto) *string {
 	if field == nil {
 		return nil
@@ -289,6 +310,10 @@ func GetMoreTags(field *google_protobuf.FieldDescriptorProto) *string {
 }
 
 type EnableFunc func(file *google_protobuf.FileDescriptorProto, message *google_protobuf.DescriptorProto) bool
+
+func EnabledGoEnumAlias(file *google_protobuf.FileDescriptorProto, enum *google_protobuf.EnumDescriptorProto) bool {
+	return proto.GetBoolExtension(enum.Options, E_EnumAlias, false)
+}
 
 func EnabledGoEnumPrefix(file *google_protobuf.FileDescriptorProto, enum *google_protobuf.EnumDescriptorProto) bool {
 	return proto.GetBoolExtension(enum.Options, E_GoprotoEnumPrefix, proto.GetBoolExtension(file.Options, E_GoprotoEnumPrefixAll, true))
