@@ -2,6 +2,7 @@
 *.js
 *.js.map
 *.DS_Store
+*.idea
 
 # Conformance test output and transient files.
 conformance/failing_tests.txt
