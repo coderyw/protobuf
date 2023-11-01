@@ -275,7 +275,7 @@ func GetEnumAliasCustomName(field *google_protobuf.EnumValueDescriptorProto) str
 		return ""
 	}
 	if field.Options != nil {
-		v, err := proto.GetExtension(field.Options,E_EnumaliasCustomname)
+		v, err := proto.GetExtension(field.Options, E_EnumaliasCustomname)
 		if err == nil && v.(*string) != nil {
 			return *(v.(*string))
 		}
@@ -325,6 +325,10 @@ func EnabledGoStringer(file *google_protobuf.FileDescriptorProto, message *googl
 
 func HasGoGetters(file *google_protobuf.FileDescriptorProto, message *google_protobuf.DescriptorProto) bool {
 	return proto.GetBoolExtension(message.Options, E_GoprotoGetters, proto.GetBoolExtension(file.Options, E_GoprotoGettersAll, true))
+}
+
+func HasGoSetters(file *google_protobuf.FileDescriptorProto, message *google_protobuf.DescriptorProto) bool {
+	return proto.GetBoolExtension(message.Options, E_GoprotoSetters, proto.GetBoolExtension(file.Options, E_GoprotoSettersAll, true))
 }
 
 func IsUnion(file *google_protobuf.FileDescriptorProto, message *google_protobuf.DescriptorProto) bool {
