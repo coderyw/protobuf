@@ -6,8 +6,8 @@ package cachedsize
 import (
 	bytes "bytes"
 	fmt "fmt"
-	_ "github.com/gogo/protobuf/gogoproto"
-	proto "github.com/gogo/protobuf/proto"
+	_ "github.com/coderyw/protobuf/gogoproto"
+	proto "github.com/coderyw/protobuf/proto"
 	math "math"
 	math_bits "math/bits"
 )

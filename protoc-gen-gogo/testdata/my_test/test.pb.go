@@ -7,8 +7,8 @@ package test
 
 import (
 	fmt "fmt"
-	proto "github.com/gogo/protobuf/proto"
-	_ "github.com/gogo/protobuf/protoc-gen-gogo/testdata/multi"
+	proto "github.com/coderyw/protobuf/proto"
+	_ "github.com/coderyw/protobuf/protoc-gen-gogo/testdata/multi"
 	math "math"
 )
 
