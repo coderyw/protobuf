@@ -766,10 +766,11 @@ func (g *Generator) SetPackageNames() {
 	// Names of support packages. These never vary (if there are conflicts,
 	// we rename the conflicting package), so this could be removed someday.
 	g.Pkg = map[string]string{
-		"fmt":          "fmt",
-		"math":         "math",
-		"proto":        "proto",
-		"golang_proto": "golang_proto",
+		"fmt":                          "fmt",
+		"math":                         "math",
+		"proto":                        "proto",
+		"golang_proto":                 "golang_proto",
+		"golang.org/x/exp/constraints": "constraints",
 	}
 }
 
@@ -1541,6 +1542,42 @@ func (g *Generator) generateEnum(enum *EnumDescriptor) {
 		g.Out()
 		g.P("}")
 	}
+
+	if gogoproto.EnabledGoEnumEqual(enum.file.FileDescriptorProto, enum.EnumDescriptorProto) {
+		g.P("func (t ", ccTypeName, ")IsEqual(val any)bool{")
+		g.In()
+		g.P("switch val.(type) {")
+		g.P("case int:")
+		g.P("return int(t) == val")
+		g.P("case int8:")
+		g.P("return int8(t) == val")
+		g.P("case int16:")
+		g.P("return int16(t) == val")
+		g.P("case int32:")
+		g.P("return int32(t) == val")
+		g.P("case int64:")
+		g.P("return int64(t) == val")
+		g.P("case uint:")
+		g.P("return uint(t) == val")
+		g.P("case uint8:")
+		g.P("return uint8(t) == val")
+		g.P("case uint16:")
+		g.P("return uint16(t) == val")
+		g.P("case uint32:")
+		g.P("return uint32(t) == val")
+		g.P("case uint64:")
+		g.P("return uint64(t) == val")
+		g.P("default:")
+		g.P("return false}")
+
+		g.Out()
+		g.P("}")
+		g.P()
+		//g.AddImport("golang.org/x/exp/constraints")
+		//g.customImports = append(g.customImports, "golang.org/x/exp/constraints")
+		//g.PrintImport(GoPackageName(g.Pkg["constraints"]), "golang.org/x/exp/constraints")
+	}
+
 	g.P()
 
 	g.P("var ", ccTypeName, "_value = map[string]int32{")

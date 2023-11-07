@@ -315,6 +315,10 @@ func EnabledGoEnumAlias(file *google_protobuf.FileDescriptorProto, enum *google_
 	return proto.GetBoolExtension(enum.Options, E_EnumAlias, false)
 }
 
+func EnabledGoEnumEqual(file *google_protobuf.FileDescriptorProto, enum *google_protobuf.EnumDescriptorProto) bool {
+	return proto.GetBoolExtension(enum.Options, E_EnumEqual, false)
+}
+
 func EnabledGoEnumPrefix(file *google_protobuf.FileDescriptorProto, enum *google_protobuf.EnumDescriptorProto) bool {
 	return proto.GetBoolExtension(enum.Options, E_GoprotoEnumPrefix, proto.GetBoolExtension(file.Options, E_GoprotoEnumPrefixAll, true))
 }

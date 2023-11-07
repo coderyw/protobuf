@@ -42,6 +42,7 @@ extend google.protobuf.EnumOptions {
   optional string enum_customname = 62023;
   optional bool enumdecl = 62024;
   optional bool enum_alias = 62025;
+  optional bool enum_equal = 62026;
 }
 
 extend google.protobuf.EnumValueOptions {
