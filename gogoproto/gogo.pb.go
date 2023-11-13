@@ -84,6 +84,15 @@ var E_EnumEqual = &proto.ExtensionDesc{
 	Filename:      "gogo.proto",
 }
 
+var E_EnumError = &proto.ExtensionDesc{
+	ExtendedType:  (*descriptor.EnumOptions)(nil),
+	ExtensionType: (*bool)(nil),
+	Field:         62027,
+	Name:          "gogoproto.enum_error",
+	Tag:           "varint,62026,opt,name=enum_error",
+	Filename:      "gogo.proto",
+}
+
 
 var E_EnumvalueCustomname = &proto.ExtensionDesc{
 	ExtendedType:  (*descriptor.EnumValueOptions)(nil),
@@ -759,6 +768,7 @@ func init() {
 	proto.RegisterExtension(E_Enumdecl)
 	proto.RegisterExtension(E_EnumAlias)
 	proto.RegisterExtension(E_EnumEqual)
+	proto.RegisterExtension(E_EnumError)
 	proto.RegisterExtension(E_EnumvalueCustomname)
 	proto.RegisterExtension(E_EnumaliasCustomname)
 	proto.RegisterExtension(E_GoprotoGettersAll)
