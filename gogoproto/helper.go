@@ -335,6 +335,10 @@ func HasGoGetters(file *google_protobuf.FileDescriptorProto, message *google_pro
 	return proto.GetBoolExtension(message.Options, E_GoprotoGetters, proto.GetBoolExtension(file.Options, E_GoprotoGettersAll, true))
 }
 
+func HasGoIsNil(file *google_protobuf.FileDescriptorProto, message *google_protobuf.DescriptorProto) bool {
+	return proto.GetBoolExtension(message.Options, E_GoprotoIsNil, proto.GetBoolExtension(file.Options, E_GoprotoIsNilAll, true))
+}
+
 func HasGoSetters(file *google_protobuf.FileDescriptorProto, message *google_protobuf.DescriptorProto) bool {
 	return proto.GetBoolExtension(message.Options, E_GoprotoSetters, proto.GetBoolExtension(file.Options, E_GoprotoSettersAll, true))
 }

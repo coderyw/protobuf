@@ -130,6 +130,15 @@ var E_GoprotoSettersAll = &proto.ExtensionDesc{
 	Filename:      "gogo.proto",
 }
 
+var E_GoprotoIsNilAll = &proto.ExtensionDesc{
+	ExtendedType:  (*descriptor.FileOptions)(nil),
+	ExtensionType: (*bool)(nil),
+	Field:         63011,
+	Name:          "gogoproto.goproto_is_nil_all",
+	Tag:           "varint,63011,opt,name=goproto_is_nil_all",
+	Filename:      "gogo.proto",
+}
+
 var E_GoprotoEnumPrefixAll = &proto.ExtensionDesc{
 	ExtendedType:  (*descriptor.FileOptions)(nil),
 	ExtensionType: (*bool)(nil),
@@ -424,6 +433,15 @@ var E_GoprotoSetters = &proto.ExtensionDesc{
 	Field:         64010,
 	Name:          "gogoproto.goproto_setters",
 	Tag:           "varint,64010,opt,name=goproto_setters",
+	Filename:      "gogo.proto",
+}
+
+var E_GoprotoIsNil = &proto.ExtensionDesc{
+	ExtendedType:  (*descriptor.MessageOptions)(nil),
+	ExtensionType: (*bool)(nil),
+	Field:         64011,
+	Name:          "gogoproto.goproto_is_nil",
+	Tag:           "varint,64011,opt,name=goproto_is_nil",
 	Filename:      "gogo.proto",
 }
 
@@ -773,6 +791,7 @@ func init() {
 	proto.RegisterExtension(E_EnumaliasCustomname)
 	proto.RegisterExtension(E_GoprotoGettersAll)
 	proto.RegisterExtension(E_GoprotoSettersAll)
+	proto.RegisterExtension(E_GoprotoIsNilAll)
 	proto.RegisterExtension(E_GoprotoEnumPrefixAll)
 	proto.RegisterExtension(E_GoprotoStringerAll)
 	proto.RegisterExtension(E_VerboseEqualAll)
@@ -806,6 +825,7 @@ func init() {
 	proto.RegisterExtension(E_GoprotoUnkeyedAll)
 	proto.RegisterExtension(E_GoprotoGetters)
 	proto.RegisterExtension(E_GoprotoSetters)
+	proto.RegisterExtension(E_GoprotoIsNil)
 	proto.RegisterExtension(E_GoprotoStringer)
 	proto.RegisterExtension(E_VerboseEqual)
 	proto.RegisterExtension(E_Face)
