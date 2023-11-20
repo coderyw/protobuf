@@ -2715,6 +2715,16 @@ func (g *Generator) generateSet(mc *msgCtx, protoField *descriptor.FieldDescript
 	g.P()
 }
 
+// generateIsNil generates isNil
+func (g *Generator) generateIsNil(mc *msgCtx) {
+	g.P("func (m *", mc.goName, ") IsNil", "() bool {")
+	g.P("return m==nil")
+	g.P("")
+	g.Out()
+	g.P("}")
+	g.P()
+}
+
 // generateInternalStructFields just adds the XXX_<something> fields to the message struct.
 func (g *Generator) generateInternalStructFields(mc *msgCtx, topLevelFields []topLevelField) {
 	if gogoproto.HasUnkeyed(g.file.FileDescriptorProto, mc.message.DescriptorProto) {
@@ -2870,6 +2880,20 @@ func (g *Generator) generateSetters(mc *msgCtx, topLevelFields []topLevelField) 
 	for _, pf := range topLevelFields {
 		pf.setter(g, mc)
 	}
+}
+
+func (g *Generator) generateIsNils(mc *msgCtx) {
+
+	g.isNiler(mc)
+}
+
+// isNiler prints the isNil method of the field.
+func (g *Generator) isNiler(mc *msgCtx) {
+	oneof := false
+	if !oneof && !gogoproto.HasGoIsNil(g.file.FileDescriptorProto, mc.message.DescriptorProto) {
+		return
+	}
+	g.generateIsNil(mc)
 }
 
 // generateCommonMethods adds methods to the message that are not on a per field basis.
@@ -3256,6 +3280,8 @@ func (g *Generator) generateMessage(message *Descriptor) {
 	g.generateGetters(mc, topLevelFields)
 	g.P()
 	g.generateSetters(mc, topLevelFields)
+	g.P()
+	g.generateIsNils(mc)
 	g.P()
 	g.generateOneofFuncs(mc, topLevelFields)
 	g.P()
