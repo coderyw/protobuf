@@ -93,7 +93,9 @@ extend google.protobuf.FileOptions {
 
   optional bool goproto_sizecache_all = 63034;
   optional bool goproto_unkeyed_all = 63035;
+  // json取消后缀的
   optional bool json_un_all = 63036;
+  // 所有field都添加form tag，tag值从json
   optional bool form_all = 63037;
 }
 

@@ -3109,7 +3109,7 @@ func (g *Generator) generateMessage(message *Descriptor) {
 		if gogoMoreTags != nil {
 			moreTags = " " + *gogoMoreTags
 		}
-		if !gogoproto.HasFormALl(g.file.FileDescriptorProto) {
+		if gogoproto.HasFormALl(g.file.FileDescriptorProto) {
 			moreTags += fmt.Sprintf(` form:%q`, jsonName)
 		}
 		tag := fmt.Sprintf("protobuf:%s json:%q%s", g.goTag(message, field, wiretype), jsonTag, moreTags)
