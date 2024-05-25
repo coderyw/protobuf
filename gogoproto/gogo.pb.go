@@ -838,7 +838,6 @@ func init() {
 	proto.RegisterExtension(E_GoprotoRegistration)
 	proto.RegisterExtension(E_MessagenameAll)
 	proto.RegisterExtension(E_GoprotoSizecacheAll)
-	proto.RegisterExtension(E_GoprotoUnkeyedAll)
 	proto.RegisterExtension(E_JsonUnAll)
 	proto.RegisterExtension(E_FormAll)
 	proto.RegisterExtension(E_GoprotoUnkeyedAll)
