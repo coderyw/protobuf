@@ -417,6 +417,22 @@ var E_GoprotoUnkeyedAll = &proto.ExtensionDesc{
 	Tag:           "varint,63035,opt,name=goproto_unkeyed_all",
 	Filename:      "gogo.proto",
 }
+var E_JsonUnAll = &proto.ExtensionDesc{
+	ExtendedType:  (*descriptor.FileOptions)(nil),
+	ExtensionType: (*bool)(nil),
+	Field:         63036,
+	Name:          "gogoproto.json_un_all",
+	Tag:           "varint,63036,opt,name=json_un_all",
+	Filename:      "gogo.proto",
+}
+var E_FormAll = &proto.ExtensionDesc{
+	ExtendedType:  (*descriptor.FileOptions)(nil),
+	ExtensionType: (*bool)(nil),
+	Field:         63037,
+	Name:          "gogoproto.form_all",
+	Tag:           "varint,63037,opt,name=form_all",
+	Filename:      "gogo.proto",
+}
 
 var E_GoprotoGetters = &proto.ExtensionDesc{
 	ExtendedType:  (*descriptor.MessageOptions)(nil),
@@ -822,6 +838,9 @@ func init() {
 	proto.RegisterExtension(E_GoprotoRegistration)
 	proto.RegisterExtension(E_MessagenameAll)
 	proto.RegisterExtension(E_GoprotoSizecacheAll)
+	proto.RegisterExtension(E_GoprotoUnkeyedAll)
+	proto.RegisterExtension(E_JsonUnAll)
+	proto.RegisterExtension(E_FormAll)
 	proto.RegisterExtension(E_GoprotoUnkeyedAll)
 	proto.RegisterExtension(E_GoprotoGetters)
 	proto.RegisterExtension(E_GoprotoSetters)

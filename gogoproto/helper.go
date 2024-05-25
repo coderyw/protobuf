@@ -296,6 +296,13 @@ func GetJsonTag(field *google_protobuf.FieldDescriptorProto) *string {
 	return nil
 }
 
+func HasJsonUnAll(file *google_protobuf.FileDescriptorProto) bool {
+	return proto.GetBoolExtension(file.Options, E_JsonUnAll, false)
+}
+func HasFormALl(file *google_protobuf.FileDescriptorProto) bool {
+	return proto.GetBoolExtension(file.Options, E_FormAll, false)
+}
+
 func GetMoreTags(field *google_protobuf.FieldDescriptorProto) *string {
 	if field == nil {
 		return nil

@@ -3090,7 +3090,12 @@ func (g *Generator) generateMessage(message *Descriptor) {
 
 		typename, wiretype := g.GoType(message, field)
 		jsonName := *field.Name
-		jsonTag := jsonName + ",omitempty"
+		jsonTag := jsonName
+
+		if !gogoproto.HasJsonUnAll(g.file.FileDescriptorProto) {
+			jsonTag += ",omitempty"
+		}
+
 		repeatedNativeType := (!field.IsMessage() && !gogoproto.IsCustomType(field) && field.IsRepeated())
 		if !gogoproto.IsNullable(field) && !repeatedNativeType {
 			jsonTag = jsonName
@@ -3103,6 +3108,9 @@ func (g *Generator) generateMessage(message *Descriptor) {
 		moreTags := ""
 		if gogoMoreTags != nil {
 			moreTags = " " + *gogoMoreTags
+		}
+		if !gogoproto.HasFormALl(g.file.FileDescriptorProto) {
+			moreTags += fmt.Sprintf(` form:%q`, jsonName)
 		}
 		tag := fmt.Sprintf("protobuf:%s json:%q%s", g.goTag(message, field, wiretype), jsonTag, moreTags)
 		if *field.Type == descriptor.FieldDescriptorProto_TYPE_MESSAGE && gogoproto.IsEmbed(field) {
