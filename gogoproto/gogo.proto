@@ -136,6 +136,8 @@ extend google.protobuf.MessageOptions {
 
   optional bool goproto_sizecache = 64034;
   optional bool goproto_unkeyed = 64035;
+  // 开启reflect结构体，使用key调用返回interface
+  optional string key_reflect = 64036;
 }
 
 extend google.protobuf.FieldOptions {

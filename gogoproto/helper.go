@@ -461,3 +461,16 @@ func HasSizecache(file *google_protobuf.FileDescriptorProto, message *google_pro
 func HasUnkeyed(file *google_protobuf.FileDescriptorProto, message *google_protobuf.DescriptorProto) bool {
 	return proto.GetBoolExtension(message.Options, E_GoprotoUnkeyed, proto.GetBoolExtension(file.Options, E_GoprotoUnkeyedAll, true))
 }
+
+func GetKeyReflect(message *google_protobuf.DescriptorProto) *string {
+	if message == nil {
+		return nil
+	}
+	if message.Options != nil {
+		v, err := proto.GetExtension(message.Options, E_KeyReflect)
+		if err == nil && v.(*string) != nil {
+			return v.(*string)
+		}
+	}
+	return nil
+}

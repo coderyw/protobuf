@@ -464,6 +464,8 @@ type Generator struct {
 	annotateCode     bool                                       // whether to store annotations
 	annotations      []*descriptor.GeneratedCodeInfo_Annotation // annotations to store
 
+	initT map[string]string
+
 	customImports  []string
 	writtenImports map[string]bool // For de-duplicating written imports
 }
@@ -483,6 +485,7 @@ func New() *Generator {
 	g.Response = new(plugin.CodeGeneratorResponse)
 	g.writtenImports = make(map[string]bool)
 	g.addedImports = make(map[GoImportPath]bool)
+	g.initT = make(map[string]string)
 	return g
 }
 
@@ -771,6 +774,7 @@ func (g *Generator) SetPackageNames() {
 		"proto":                        "proto",
 		"golang_proto":                 "golang_proto",
 		"golang.org/x/exp/constraints": "constraints",
+		"reflect":                      "key_reflect",
 	}
 }
 
@@ -1154,7 +1158,7 @@ func (g *Generator) GenerateAllFiles() {
 	for _, file := range g.genFiles {
 		genFileMap[file] = true
 	}
-	for _, file := range g.allFiles {
+	for i, file := range g.allFiles {
 		g.Reset()
 		g.annotations = nil
 		g.writeOutput = genFileMap[file]
@@ -1175,6 +1179,9 @@ func (g *Generator) GenerateAllFiles() {
 				Content: proto.String(proto.CompactTextString(&descriptor.GeneratedCodeInfo{Annotation: g.annotations})),
 			})
 		}
+		if i == len(g.allFiles)-1 {
+			g.GenerateReflect()
+		}
 	}
 }
 
@@ -1182,6 +1189,19 @@ func (g *Generator) GenerateAllFiles() {
 func (g *Generator) runPlugins(file *FileDescriptor) {
 	for _, p := range plugins {
 		p.Generate(file)
+	}
+}
+
+func (g *Generator) GenerateReflect() {
+	if len(g.initT) > 0 {
+		return
+	}
+	g.P()
+	g.P("// register reflect")
+	g.P("func init(){")
+	g.In()
+	for k, v := range g.initT {
+		g.P("keyreflect.Register(", k, ",", v)
 	}
 }
 
@@ -1406,6 +1426,7 @@ func (g *Generator) generateImports() {
 	g.P("import (")
 	g.PrintImport(GoPackageName(g.Pkg["fmt"]), "fmt")
 	g.PrintImport(GoPackageName(g.Pkg["math"]), "math")
+
 	if gogoproto.ImportsGoGoProto(g.file.FileDescriptorProto) {
 		g.PrintImport(GoPackageName(g.Pkg["proto"]), GoImportPath(g.ImportPrefix)+GoImportPath("github.com/coderyw/protobuf/proto"))
 		if gogoproto.RegistersGolangProto(g.file.FileDescriptorProto) {
@@ -2773,6 +2794,15 @@ func (g *Generator) generateOneofFuncs(mc *msgCtx, topLevelFields []topLevelFiel
 	g.P("}")
 	g.P("}")
 	g.P()
+}
+
+func (g *Generator) generateReflect(mc *msgCtx) {
+	key := gogoproto.GetKeyReflect(mc.message.DescriptorProto)
+	if key != nil {
+		g.AddImport("github.com/coderyw/protobuf/keyreflect")
+		g.AddImport("reflect")
+		g.initT[*key] = fmt.Sprintf("reflect.type(%v)", mc.goName)
+	}
 }
 
 func (g *Generator) generateOneofDecls(mc *msgCtx, topLevelFields []topLevelField) {
