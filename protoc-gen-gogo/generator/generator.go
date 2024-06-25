@@ -1163,6 +1163,9 @@ func (g *Generator) GenerateAllFiles() {
 		g.annotations = nil
 		g.writeOutput = genFileMap[file]
 		g.generate(file)
+		if i == len(g.allFiles)-1 {
+			g.GenerateReflect()
+		}
 		if !g.writeOutput {
 			continue
 		}
@@ -1179,9 +1182,7 @@ func (g *Generator) GenerateAllFiles() {
 				Content: proto.String(proto.CompactTextString(&descriptor.GeneratedCodeInfo{Annotation: g.annotations})),
 			})
 		}
-		if i == len(g.allFiles)-1 {
-			g.GenerateReflect()
-		}
+
 	}
 }
 
@@ -1193,16 +1194,20 @@ func (g *Generator) runPlugins(file *FileDescriptor) {
 }
 
 func (g *Generator) GenerateReflect() {
-	if len(g.initT) > 0 {
+	if len(g.initT) == 0 {
 		return
 	}
 	g.P()
 	g.P("// register reflect")
 	g.P("func init(){")
+	g.P()
 	g.In()
 	for k, v := range g.initT {
-		g.P("keyreflect.Register(", k, ",", v)
+		g.P("keyreflect.Register(" + fmt.Sprintf(`"%v"`, k) + "," + v + ")")
+		g.P()
 	}
+	g.Out()
+	g.P("}")
 }
 
 // Fill the response protocol buffer with the generated output for all the files we're
@@ -2801,7 +2806,7 @@ func (g *Generator) generateReflect(mc *msgCtx) {
 	if key != nil {
 		g.AddImport("github.com/coderyw/protobuf/keyreflect")
 		g.AddImport("reflect")
-		g.initT[*key] = fmt.Sprintf("reflect.type(%v)", mc.goName)
+		g.initT[*key] = fmt.Sprintf("reflect.TypeOf(%v{})", mc.goName)
 	}
 }
 
@@ -3323,6 +3328,7 @@ func (g *Generator) generateMessage(message *Descriptor) {
 	g.P()
 	g.generateOneofFuncs(mc, topLevelFields)
 	g.P()
+	g.generateReflect(mc)
 
 	var oneofTypes []string
 	for _, f := range topLevelFields {
