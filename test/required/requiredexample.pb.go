@@ -7,7 +7,7 @@ import (
 	encoding_binary "encoding/binary"
 	fmt "fmt"
 	_ "github.com/coderyw/protobuf/gogoproto"
-	github_com_gogo_protobuf_proto "github.com/coderyw/protobuf/proto"
+	github_com_coderyw_protobuf_proto "github.com/coderyw/protobuf/proto"
 	proto "github.com/coderyw/protobuf/proto"
 	io "io"
 	math "math"
@@ -86,6 +86,32 @@ func (m *RequiredExample) GetTheRepeatedStrings() []string {
 		return m.TheRepeatedStrings
 	}
 	return nil
+}
+
+func (m *RequiredExample) SetTheRequiredString_(val string) {
+	if m != nil {
+		*m.TheRequiredString = val
+	}
+
+}
+
+func (m *RequiredExample) SetTheOptionalString_(val string) {
+	if m != nil {
+		*m.TheOptionalString = val
+	}
+
+}
+
+func (m *RequiredExample) SetTheRepeatedStrings_(val []string) {
+	if m != nil {
+		m.TheRepeatedStrings = val
+	}
+	return
+}
+
+func (m *RequiredExample) IsNil() bool {
+	return m == nil
+
 }
 
 type NidOptNative struct {
@@ -247,6 +273,116 @@ func (m *NidOptNative) GetField15() []byte {
 	return nil
 }
 
+func (m *NidOptNative) SetField1_(val float64) {
+	if m != nil {
+		m.Field1 = val
+	}
+
+}
+
+func (m *NidOptNative) SetField2_(val float32) {
+	if m != nil {
+		m.Field2 = val
+	}
+
+}
+
+func (m *NidOptNative) SetField3_(val int32) {
+	if m != nil {
+		m.Field3 = val
+	}
+
+}
+
+func (m *NidOptNative) SetField4_(val int64) {
+	if m != nil {
+		m.Field4 = val
+	}
+
+}
+
+func (m *NidOptNative) SetField5_(val uint32) {
+	if m != nil {
+		m.Field5 = val
+	}
+
+}
+
+func (m *NidOptNative) SetField6_(val uint64) {
+	if m != nil {
+		m.Field6 = val
+	}
+
+}
+
+func (m *NidOptNative) SetField7_(val int32) {
+	if m != nil {
+		m.Field7 = val
+	}
+
+}
+
+func (m *NidOptNative) SetField8_(val int64) {
+	if m != nil {
+		m.Field8 = val
+	}
+
+}
+
+func (m *NidOptNative) SetField9_(val uint32) {
+	if m != nil {
+		m.Field9 = val
+	}
+
+}
+
+func (m *NidOptNative) SetField10_(val int32) {
+	if m != nil {
+		m.Field10 = val
+	}
+
+}
+
+func (m *NidOptNative) SetField11_(val uint64) {
+	if m != nil {
+		m.Field11 = val
+	}
+
+}
+
+func (m *NidOptNative) SetField12_(val int64) {
+	if m != nil {
+		m.Field12 = val
+	}
+
+}
+
+func (m *NidOptNative) SetField13_(val bool) {
+	if m != nil {
+		m.Field13 = val
+	}
+
+}
+
+func (m *NidOptNative) SetField14_(val string) {
+	if m != nil {
+		m.Field14 = val
+	}
+
+}
+
+func (m *NidOptNative) SetField15_(val []byte) {
+	if m != nil {
+		m.Field15 = val
+	}
+	return
+}
+
+func (m *NidOptNative) IsNil() bool {
+	return m == nil
+
+}
+
 type NinOptNative struct {
 	Field1               *float64 `protobuf:"fixed64,1,req,name=Field1" json:"Field1,omitempty"`
 	Field2               *float32 `protobuf:"fixed32,2,req,name=Field2" json:"Field2,omitempty"`
@@ -406,6 +542,116 @@ func (m *NinOptNative) GetField15() []byte {
 	return nil
 }
 
+func (m *NinOptNative) SetField1_(val float64) {
+	if m != nil {
+		*m.Field1 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField2_(val float32) {
+	if m != nil {
+		*m.Field2 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField3_(val int32) {
+	if m != nil {
+		*m.Field3 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField4_(val int64) {
+	if m != nil {
+		*m.Field4 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField5_(val uint32) {
+	if m != nil {
+		*m.Field5 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField6_(val uint64) {
+	if m != nil {
+		*m.Field6 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField7_(val int32) {
+	if m != nil {
+		*m.Field7 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField8_(val int64) {
+	if m != nil {
+		*m.Field8 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField9_(val uint32) {
+	if m != nil {
+		*m.Field9 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField10_(val int32) {
+	if m != nil {
+		*m.Field10 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField11_(val uint64) {
+	if m != nil {
+		*m.Field11 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField12_(val int64) {
+	if m != nil {
+		*m.Field12 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField13_(val bool) {
+	if m != nil {
+		*m.Field13 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField14_(val string) {
+	if m != nil {
+		*m.Field14 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField15_(val []byte) {
+	if m != nil {
+		m.Field15 = val
+	}
+	return
+}
+
+func (m *NinOptNative) IsNil() bool {
+	return m == nil
+
+}
+
 type NestedNinOptNative struct {
 	NestedNinOpts        []*NinOptNative `protobuf:"bytes,1,rep,name=NestedNinOpts" json:"NestedNinOpts,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
@@ -453,6 +699,18 @@ func (m *NestedNinOptNative) GetNestedNinOpts() []*NinOptNative {
 	return nil
 }
 
+func (m *NestedNinOptNative) SetNestedNinOpts_(val []*NinOptNative) {
+	if m != nil {
+		m.NestedNinOpts = val
+	}
+	return
+}
+
+func (m *NestedNinOptNative) IsNil() bool {
+	return m == nil
+
+}
+
 func init() {
 	proto.RegisterType((*RequiredExample)(nil), "required.RequiredExample")
 	proto.RegisterType((*NidOptNative)(nil), "required.NidOptNative")
@@ -463,37 +721,37 @@ func init() {
 func init() { proto.RegisterFile("requiredexample.proto", fileDescriptor_96043524afb2ed2f) }
 
 var fileDescriptor_96043524afb2ed2f = []byte{
-	// 469 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0xd4, 0xdd, 0x8e, 0xd2, 0x40,
-	0x14, 0xc0, 0x71, 0x3b, 0x65, 0xf9, 0x98, 0x05, 0xd9, 0x6d, 0xe2, 0xe4, 0xc4, 0x98, 0x7a, 0xc2,
-	0xd5, 0x5c, 0x68, 0x57, 0x0a, 0xec, 0x47, 0xe2, 0xd5, 0x26, 0x7a, 0xc9, 0x26, 0xf5, 0x09, 0x58,
-	0x19, 0xd9, 0x26, 0x2c, 0xad, 0x30, 0x18, 0xaf, 0x7d, 0x0f, 0xdf, 0x67, 0x2f, 0x7d, 0x00, 0x63,
-	0x94, 0xa7, 0xf0, 0xd2, 0x58, 0xda, 0x33, 0x9c, 0xea, 0x1d, 0x3d, 0xff, 0x33, 0x13, 0xc8, 0x8f,
-	0x54, 0x3e, 0x59, 0x9b, 0x8f, 0xdb, 0x74, 0x6d, 0xe6, 0xe6, 0xf3, 0xec, 0x3e, 0x5f, 0x9a, 0x28,
-	0x5f, 0x67, 0x36, 0x0b, 0xda, 0xd5, 0xf8, 0xe9, 0xcb, 0x45, 0x6a, 0xef, 0xb6, 0xb7, 0xd1, 0xfb,
-	0xec, 0xfe, 0x6c, 0x91, 0x2d, 0xb2, 0xb3, 0x62, 0xe1, 0x76, 0xfb, 0xa1, 0x78, 0x2a, 0x1e, 0x8a,
-	0x4f, 0xfb, 0x83, 0x83, 0xaf, 0x9e, 0xec, 0x27, 0xe5, 0xd9, 0x37, 0xfb, 0x2b, 0x83, 0x17, 0xf2,
-	0xd4, 0xde, 0x99, 0x6a, 0xfa, 0xce, 0xae, 0xd3, 0xd5, 0x02, 0x3c, 0x14, 0xba, 0x93, 0xfc, 0x1b,
-	0xca, 0xed, 0x9b, 0xdc, 0xa6, 0xd9, 0x6a, 0xb6, 0x2c, 0xb7, 0x05, 0x7a, 0xe5, 0x36, 0x0f, 0x41,
-	0x24, 0x83, 0xe2, 0x8a, 0xdc, 0xcc, 0x6c, 0x75, 0xc5, 0x06, 0x7c, 0xf4, 0x75, 0x27, 0xf9, 0x4f,
-	0x19, 0x7c, 0xf7, 0x65, 0x77, 0x9a, 0xce, 0x6f, 0x72, 0x3b, 0x9d, 0xd9, 0xf4, 0x93, 0x09, 0x9e,
-	0xc9, 0xe6, 0xdb, 0xd4, 0x2c, 0xe7, 0xc3, 0xe2, 0x1b, 0x79, 0xd7, 0x8d, 0x87, 0x1f, 0xcf, 0x1f,
-	0x25, 0xe5, 0x8c, 0x6a, 0x0c, 0x02, 0x85, 0x16, 0xac, 0xc6, 0x54, 0x47, 0xe0, 0xa3, 0xd0, 0x47,
-	0xac, 0x8e, 0xa8, 0x8e, 0xa1, 0x81, 0x42, 0xfb, 0xac, 0x8e, 0xa9, 0x4e, 0xe0, 0x08, 0x85, 0xee,
-	0xb1, 0x3a, 0xa1, 0x7a, 0x0e, 0x4d, 0x14, 0xba, 0xc1, 0xea, 0x39, 0xd5, 0x0b, 0x68, 0xa1, 0xd0,
-	0xa7, 0xac, 0x5e, 0x50, 0xbd, 0x84, 0x36, 0x0a, 0x1d, 0xb0, 0x7a, 0x49, 0xf5, 0x0a, 0x3a, 0x28,
-	0x74, 0x8b, 0xd5, 0xab, 0x20, 0x94, 0xad, 0xfd, 0x2f, 0x7f, 0x05, 0x12, 0x85, 0xee, 0x97, 0xb9,
-	0x1a, 0xba, 0x3e, 0x84, 0x63, 0x14, 0xba, 0xc9, 0xfb, 0xd0, 0xf5, 0x18, 0xba, 0x28, 0xf4, 0x09,
-	0xef, 0xb1, 0xeb, 0x23, 0xe8, 0xa1, 0xd0, 0x6d, 0xde, 0x47, 0xae, 0x8f, 0xe1, 0xf1, 0xdf, 0x3f,
-	0x08, 0xef, 0x63, 0xd7, 0x27, 0xd0, 0x47, 0xa1, 0xbb, 0xbc, 0x4f, 0x06, 0x5f, 0x0a, 0xde, 0x95,
-	0xe3, 0x55, 0x9c, 0x97, 0x60, 0x15, 0x87, 0x25, 0x52, 0xc5, 0x49, 0x09, 0x53, 0x71, 0x4c, 0x62,
-	0x54, 0x9c, 0x91, 0x00, 0x15, 0x07, 0x24, 0x3a, 0xc5, 0xe9, 0x08, 0x4d, 0x71, 0x34, 0xe2, 0x52,
-	0x9c, 0x8b, 0xa0, 0xa0, 0x06, 0xe5, 0x88, 0xa0, 0x46, 0xe4, 0x70, 0xa0, 0x86, 0xe3, 0x58, 0xa0,
-	0xc6, 0xe2, 0x40, 0xa0, 0x06, 0xe2, 0x28, 0xa0, 0x46, 0xe1, 0x10, 0x12, 0x19, 0x4c, 0xcd, 0xc6,
-	0x9a, 0x39, 0x93, 0x78, 0x2d, 0x7b, 0x87, 0xd3, 0x0d, 0x78, 0xe8, 0xeb, 0xe3, 0x58, 0x45, 0xd5,
-	0xab, 0x26, 0x3a, 0x5c, 0x4f, 0xf8, 0xf2, 0xf5, 0xc9, 0xef, 0x5f, 0xa1, 0xf7, 0xb0, 0x0b, 0xbd,
-	0x6f, 0xbb, 0xd0, 0xfb, 0xb9, 0x0b, 0xbd, 0x3f, 0x01, 0x00, 0x00, 0xff, 0xff, 0x03, 0x9e, 0xae,
-	0x5f, 0xba, 0x04, 0x00, 0x00,
+	// 475 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0xd4, 0x4d, 0x6e, 0xd3, 0x40,
+	0x14, 0xc0, 0x71, 0x66, 0x9c, 0xe6, 0x63, 0x9a, 0x90, 0xd6, 0x12, 0xa3, 0x27, 0x84, 0xc2, 0x28,
+	0xab, 0x59, 0x20, 0xa7, 0x71, 0x92, 0x7e, 0x48, 0xac, 0x2a, 0xc1, 0x32, 0x95, 0xcc, 0x09, 0xd2,
+	0x7a, 0x48, 0x2d, 0xa5, 0xb1, 0x71, 0x26, 0x7c, 0x6c, 0xb9, 0x07, 0xf7, 0xe9, 0x92, 0x03, 0x20,
+	0x04, 0x39, 0x05, 0x4b, 0x84, 0x63, 0xbf, 0xe9, 0x33, 0xdd, 0x25, 0xef, 0xff, 0x66, 0x94, 0xe8,
+	0x67, 0x59, 0x3c, 0xcb, 0xcd, 0x87, 0x6d, 0x92, 0x9b, 0xd8, 0x7c, 0x5e, 0xdc, 0x65, 0x2b, 0x13,
+	0x64, 0x79, 0x6a, 0x53, 0xbf, 0x5d, 0x8d, 0x9f, 0x9f, 0x2c, 0x13, 0x7b, 0xbb, 0xbd, 0x0e, 0x6e,
+	0xd2, 0xbb, 0xd1, 0x4d, 0x1a, 0x9b, 0xfc, 0xcb, 0xa7, 0x51, 0xb1, 0x73, 0xbd, 0x7d, 0x3f, 0x5a,
+	0xa6, 0xcb, 0xb4, 0xf8, 0x52, 0x7c, 0xda, 0x9f, 0x1d, 0x7e, 0x63, 0xa2, 0x1f, 0x95, 0xc7, 0xdf,
+	0xec, 0x6f, 0xf5, 0x5f, 0x89, 0x63, 0x7b, 0x6b, 0xaa, 0xe9, 0x3b, 0x9b, 0x27, 0xeb, 0x25, 0x30,
+	0xc5, 0x75, 0x27, 0xfa, 0x3f, 0x94, 0xdb, 0x57, 0x99, 0x4d, 0xd2, 0xf5, 0x62, 0x55, 0x6e, 0x73,
+	0xc5, 0xca, 0x6d, 0x1a, 0xfc, 0x40, 0xf8, 0xc5, 0x15, 0x99, 0x59, 0xd8, 0xea, 0x8a, 0x0d, 0x78,
+	0xca, 0xd3, 0x9d, 0xe8, 0x91, 0x32, 0xfc, 0xe1, 0x89, 0xee, 0x3c, 0x89, 0xaf, 0x32, 0x3b, 0x5f,
+	0xd8, 0xe4, 0xa3, 0xf1, 0x5f, 0x88, 0xe6, 0xdb, 0xc4, 0xac, 0xe2, 0x71, 0xf1, 0x8b, 0xd8, 0x65,
+	0xe3, 0xfe, 0xe7, 0xcb, 0x27, 0x51, 0x39, 0xc3, 0x1a, 0x02, 0x57, 0x5c, 0x73, 0x52, 0x43, 0xac,
+	0x13, 0xf0, 0x14, 0xd7, 0x07, 0xa4, 0x4e, 0xb0, 0x4e, 0xa1, 0xa1, 0xb8, 0xf6, 0x48, 0x9d, 0x62,
+	0x9d, 0xc1, 0x81, 0xe2, 0xba, 0x47, 0xea, 0x0c, 0xeb, 0x29, 0x34, 0x15, 0xd7, 0x0d, 0x52, 0x4f,
+	0xb1, 0x9e, 0x41, 0x4b, 0x71, 0x7d, 0x4c, 0xea, 0x19, 0xd6, 0x73, 0x68, 0x2b, 0xae, 0x7d, 0x52,
+	0xcf, 0xb1, 0x5e, 0x40, 0x47, 0x71, 0xdd, 0x22, 0xf5, 0xc2, 0x1f, 0x88, 0xd6, 0xfe, 0x9f, 0x9f,
+	0x80, 0x50, 0x5c, 0xf7, 0xcb, 0x5c, 0x0d, 0x5d, 0x1f, 0xc3, 0xa1, 0xe2, 0xba, 0x49, 0xfb, 0xd8,
+	0xf5, 0x10, 0xba, 0x8a, 0xeb, 0x23, 0xda, 0x43, 0xd7, 0x27, 0xd0, 0x53, 0x5c, 0xb7, 0x69, 0x9f,
+	0xb8, 0x3e, 0x85, 0xa7, 0xff, 0x1e, 0x10, 0xda, 0xa7, 0xae, 0xcf, 0xa0, 0xaf, 0xb8, 0xee, 0xd2,
+	0x3e, 0x1b, 0x7e, 0x2d, 0x78, 0xd7, 0x8e, 0x57, 0x52, 0x5e, 0x84, 0x95, 0x14, 0x16, 0x49, 0x25,
+	0x25, 0x45, 0x4c, 0x49, 0x31, 0x91, 0x51, 0x52, 0x46, 0x04, 0x94, 0x14, 0x10, 0xe9, 0x24, 0xa5,
+	0x43, 0x34, 0x49, 0xd1, 0x90, 0x4b, 0x52, 0x2e, 0x84, 0x82, 0x1a, 0x94, 0x23, 0x82, 0x1a, 0x91,
+	0xc3, 0x81, 0x1a, 0x8e, 0x63, 0x81, 0x1a, 0x8b, 0x03, 0x81, 0x1a, 0x88, 0xa3, 0x80, 0x1a, 0x85,
+	0x43, 0x88, 0x84, 0x3f, 0x37, 0x1b, 0x6b, 0x62, 0x22, 0xf1, 0x5a, 0xf4, 0x1e, 0x4e, 0x37, 0xc0,
+	0x94, 0xa7, 0x0f, 0x43, 0x19, 0x54, 0x6f, 0x9b, 0xe0, 0xe1, 0x7a, 0x44, 0x97, 0x2f, 0x8f, 0xfe,
+	0xfc, 0x1e, 0xb0, 0xfb, 0xdd, 0x80, 0x7d, 0xdf, 0x0d, 0xd8, 0xaf, 0xdd, 0x80, 0xfd, 0x0d, 0x00,
+	0x00, 0xff, 0xff, 0x18, 0x12, 0x73, 0x35, 0xbd, 0x04, 0x00, 0x00,
 }
 
 func (m *RequiredExample) Marshal() (dAtA []byte, err error) {
@@ -537,7 +795,7 @@ func (m *RequiredExample) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		dAtA[i] = 0x12
 	}
 	if m.TheRequiredString == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("theRequiredString")
+		return 0, github_com_coderyw_protobuf_proto.NewRequiredNotSetError("theRequiredString")
 	} else {
 		i -= len(*m.TheRequiredString)
 		copy(dAtA[i:], *m.TheRequiredString)
@@ -662,7 +920,7 @@ func (m *NinOptNative) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		copy(dAtA[i:], m.XXX_unrecognized)
 	}
 	if m.Field15 == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field15")
+		return 0, github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field15")
 	} else {
 		i -= len(m.Field15)
 		copy(dAtA[i:], m.Field15)
@@ -671,7 +929,7 @@ func (m *NinOptNative) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		dAtA[i] = 0x7a
 	}
 	if m.Field14 == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field14")
+		return 0, github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field14")
 	} else {
 		i -= len(*m.Field14)
 		copy(dAtA[i:], *m.Field14)
@@ -680,7 +938,7 @@ func (m *NinOptNative) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		dAtA[i] = 0x72
 	}
 	if m.Field13 == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field13")
+		return 0, github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field13")
 	} else {
 		i--
 		if *m.Field13 {
@@ -692,7 +950,7 @@ func (m *NinOptNative) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		dAtA[i] = 0x68
 	}
 	if m.Field12 == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field12")
+		return 0, github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field12")
 	} else {
 		i -= 8
 		encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(*m.Field12))
@@ -700,7 +958,7 @@ func (m *NinOptNative) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		dAtA[i] = 0x61
 	}
 	if m.Field11 == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field11")
+		return 0, github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field11")
 	} else {
 		i -= 8
 		encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(*m.Field11))
@@ -708,7 +966,7 @@ func (m *NinOptNative) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		dAtA[i] = 0x59
 	}
 	if m.Field10 == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field10")
+		return 0, github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field10")
 	} else {
 		i -= 4
 		encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(*m.Field10))
@@ -716,7 +974,7 @@ func (m *NinOptNative) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		dAtA[i] = 0x55
 	}
 	if m.Field9 == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field9")
+		return 0, github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field9")
 	} else {
 		i -= 4
 		encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(*m.Field9))
@@ -724,49 +982,49 @@ func (m *NinOptNative) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		dAtA[i] = 0x4d
 	}
 	if m.Field8 == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field8")
+		return 0, github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field8")
 	} else {
 		i = encodeVarintRequiredexample(dAtA, i, uint64((uint64(*m.Field8)<<1)^uint64((*m.Field8>>63))))
 		i--
 		dAtA[i] = 0x40
 	}
 	if m.Field7 == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field7")
+		return 0, github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field7")
 	} else {
 		i = encodeVarintRequiredexample(dAtA, i, uint64((uint32(*m.Field7)<<1)^uint32((*m.Field7>>31))))
 		i--
 		dAtA[i] = 0x38
 	}
 	if m.Field6 == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field6")
+		return 0, github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field6")
 	} else {
 		i = encodeVarintRequiredexample(dAtA, i, uint64(*m.Field6))
 		i--
 		dAtA[i] = 0x30
 	}
 	if m.Field5 == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field5")
+		return 0, github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field5")
 	} else {
 		i = encodeVarintRequiredexample(dAtA, i, uint64(*m.Field5))
 		i--
 		dAtA[i] = 0x28
 	}
 	if m.Field4 == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field4")
+		return 0, github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field4")
 	} else {
 		i = encodeVarintRequiredexample(dAtA, i, uint64(*m.Field4))
 		i--
 		dAtA[i] = 0x20
 	}
 	if m.Field3 == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field3")
+		return 0, github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field3")
 	} else {
 		i = encodeVarintRequiredexample(dAtA, i, uint64(*m.Field3))
 		i--
 		dAtA[i] = 0x18
 	}
 	if m.Field2 == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field2")
+		return 0, github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field2")
 	} else {
 		i -= 4
 		encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(*m.Field2))))
@@ -774,7 +1032,7 @@ func (m *NinOptNative) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		dAtA[i] = 0x15
 	}
 	if m.Field1 == nil {
-		return 0, github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field1")
+		return 0, github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field1")
 	} else {
 		i -= 8
 		encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(math.Float64bits(float64(*m.Field1))))
@@ -1346,7 +1604,7 @@ func (m *RequiredExample) Unmarshal(dAtA []byte) error {
 		}
 	}
 	if hasFields[0]&uint64(0x00000001) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("theRequiredString")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("theRequiredString")
 	}
 
 	if iNdEx > l {
@@ -1682,49 +1940,49 @@ func (m *NidOptNative) Unmarshal(dAtA []byte) error {
 		}
 	}
 	if hasFields[0]&uint64(0x00000001) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field1")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field1")
 	}
 	if hasFields[0]&uint64(0x00000002) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field2")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field2")
 	}
 	if hasFields[0]&uint64(0x00000004) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field3")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field3")
 	}
 	if hasFields[0]&uint64(0x00000008) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field4")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field4")
 	}
 	if hasFields[0]&uint64(0x00000010) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field5")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field5")
 	}
 	if hasFields[0]&uint64(0x00000020) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field6")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field6")
 	}
 	if hasFields[0]&uint64(0x00000040) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field7")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field7")
 	}
 	if hasFields[0]&uint64(0x00000080) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field8")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field8")
 	}
 	if hasFields[0]&uint64(0x00000100) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field9")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field9")
 	}
 	if hasFields[0]&uint64(0x00000200) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field10")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field10")
 	}
 	if hasFields[0]&uint64(0x00000400) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field11")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field11")
 	}
 	if hasFields[0]&uint64(0x00000800) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field12")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field12")
 	}
 	if hasFields[0]&uint64(0x00001000) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field13")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field13")
 	}
 	if hasFields[0]&uint64(0x00002000) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field14")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field14")
 	}
 	if hasFields[0]&uint64(0x00004000) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field15")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field15")
 	}
 
 	if iNdEx > l {
@@ -2073,49 +2331,49 @@ func (m *NinOptNative) Unmarshal(dAtA []byte) error {
 		}
 	}
 	if hasFields[0]&uint64(0x00000001) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field1")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field1")
 	}
 	if hasFields[0]&uint64(0x00000002) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field2")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field2")
 	}
 	if hasFields[0]&uint64(0x00000004) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field3")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field3")
 	}
 	if hasFields[0]&uint64(0x00000008) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field4")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field4")
 	}
 	if hasFields[0]&uint64(0x00000010) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field5")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field5")
 	}
 	if hasFields[0]&uint64(0x00000020) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field6")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field6")
 	}
 	if hasFields[0]&uint64(0x00000040) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field7")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field7")
 	}
 	if hasFields[0]&uint64(0x00000080) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field8")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field8")
 	}
 	if hasFields[0]&uint64(0x00000100) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field9")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field9")
 	}
 	if hasFields[0]&uint64(0x00000200) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field10")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field10")
 	}
 	if hasFields[0]&uint64(0x00000400) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field11")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field11")
 	}
 	if hasFields[0]&uint64(0x00000800) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field12")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field12")
 	}
 	if hasFields[0]&uint64(0x00001000) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field13")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field13")
 	}
 	if hasFields[0]&uint64(0x00002000) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field14")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field14")
 	}
 	if hasFields[0]&uint64(0x00004000) == 0 {
-		return github_com_gogo_protobuf_proto.NewRequiredNotSetError("Field15")
+		return github_com_coderyw_protobuf_proto.NewRequiredNotSetError("Field15")
 	}
 
 	if iNdEx > l {

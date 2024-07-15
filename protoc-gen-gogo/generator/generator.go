@@ -349,7 +349,7 @@ func (d *FileDescriptor) goFileName(pathType pathType) string {
 	if ext := path.Ext(name); ext == ".proto" || ext == ".protodevel" {
 		name = name[:len(name)-len(ext)]
 	}
-	name += ".pb.go"
+	name += ".gogo.pb.go"
 
 	if pathType == pathTypeSourceRelative {
 		return name
@@ -1534,20 +1534,21 @@ func (g *Generator) generateEnum(enum *EnumDescriptor) {
 		g.P(")")
 	}
 	g.P()
-	g.P("var ", ccTypeName, "_name = map[int32]string{")
-	g.In()
-	generated := make(map[int32]bool) // avoid duplicate values
-	for _, e := range enum.Value {
-		duplicate := ""
-		if _, present := generated[*e.Number]; present {
-			duplicate = "// Duplicate value: "
-		}
-		g.P(duplicate, e.Number, ": ", strconv.Quote(*e.Name), ",")
-		generated[*e.Number] = true
-	}
-	g.Out()
-	g.P("}")
-	g.P()
+	// todo remove me. 为了兼容go_out
+	//g.P("var ", ccTypeName, "_name = map[int32]string{")
+	//g.In()
+	//generated := make(map[int32]bool) // avoid duplicate values
+	//for _, e := range enum.Value {
+	//	duplicate := ""
+	//	if _, present := generated[*e.Number]; present {
+	//		duplicate = "// Duplicate value: "
+	//	}
+	//	g.P(duplicate, e.Number, ": ", strconv.Quote(*e.Name), ",")
+	//	generated[*e.Number] = true
+	//}
+	//g.Out()
+	//g.P("}")
+	//g.P()
 
 	if gogoproto.EnabledGoEnumAlias(enum.file.FileDescriptorProto, enum.EnumDescriptorProto) {
 		g.P("var ", ccTypeName, "_alias = map[int32]string{")
@@ -1658,11 +1659,18 @@ func (g *Generator) generateEnum(enum *EnumDescriptor) {
 		g.Out()
 		g.P("}")
 
-		g.P("func(c ", ccTypeName, ") New(err error) error{")
+		g.ImportMap["github.com/coderyw/protobuf/log"] = "golog"
+		g.addedImports["github.com/coderyw/protobuf/log"] = true
+
+		g.P("func(c ", ccTypeName, ") New(errs ...error) error{")
 		g.In()
-		g.P("if err == nil {")
+		g.P("var err error")
+		g.P("if len(errs)==0 {")
 		g.P("err = errors.New(c.StringAlias())")
+		g.P("}else{")
+		g.P("err = errors.Join(errs...)")
 		g.P("}")
+		g.P("golog.Error(c.StringAlias(), err")
 		g.P("return &", ce, "{")
 		g.P("code: c,")
 		g.P("err:  err,")
@@ -1676,6 +1684,7 @@ func (g *Generator) generateEnum(enum *EnumDescriptor) {
 		g.P("if err == nil {")
 		g.P("return nil")
 		g.P("}")
+		g.P("golog.Error(c.StringAlias(), err")
 		g.P("return &", ce, "{")
 		g.P("code: c,")
 		g.P("err:  err,")
@@ -1687,14 +1696,15 @@ func (g *Generator) generateEnum(enum *EnumDescriptor) {
 
 	g.P()
 
-	g.P("var ", ccTypeName, "_value = map[string]int32{")
-	g.In()
-	for _, e := range enum.Value {
-		g.P(strconv.Quote(*e.Name), ": ", e.Number, ",")
-	}
-	g.Out()
-	g.P("}")
-	g.P()
+	// todo remove me. 为了兼容go_out
+	//g.P("var ", ccTypeName, "_value = map[string]int32{")
+	//g.In()
+	//for _, e := range enum.Value {
+	//	g.P(strconv.Quote(*e.Name), ": ", e.Number, ",")
+	//}
+	//g.Out()
+	//g.P("}")
+	//g.P()
 
 	if !enum.proto3() {
 		g.P("func (x ", ccTypeName, ") Enum() *", ccTypeName, " {")
@@ -1727,6 +1737,7 @@ func (g *Generator) generateEnum(enum *EnumDescriptor) {
 		g.Out()
 		g.P("}")
 		g.P()
+		g.addedImports["strconv"] = true
 	}
 
 	if !enum.proto3() && !gogoproto.IsGoEnumStringer(g.file.FileDescriptorProto, enum.EnumDescriptorProto) {
@@ -1753,18 +1764,19 @@ func (g *Generator) generateEnum(enum *EnumDescriptor) {
 		g.P()
 	}
 
-	var indexes []string
-	for m := enum.parent; m != nil; m = m.parent {
-		// XXX: skip groups?
-		indexes = append([]string{strconv.Itoa(m.index)}, indexes...)
-	}
-	indexes = append(indexes, strconv.Itoa(enum.index))
-	g.P("func (", ccTypeName, ") EnumDescriptor() ([]byte, []int) {")
-	g.In()
-	g.P("return ", g.file.VarName(), ", []int{", strings.Join(indexes, ", "), "}")
-	g.Out()
-	g.P("}")
-	g.P()
+	// todo remove me. 为了兼容go_out
+	//var indexes []string
+	//for m := enum.parent; m != nil; m = m.parent {
+	//	// XXX: skip groups?
+	//	indexes = append([]string{strconv.Itoa(m.index)}, indexes...)
+	//}
+	//indexes = append(indexes, strconv.Itoa(enum.index))
+	//g.P("func (", ccTypeName, ") EnumDescriptor() ([]byte, []int) {")
+	//g.In()
+	//g.P("return ", g.file.VarName(), ", []int{", strings.Join(indexes, ", "), "}")
+	//g.Out()
+	//g.P("}")
+	//g.P()
 	if enum.file.GetPackage() == "google.protobuf" && enum.GetName() == "NullValue" {
 		g.P("func (", ccTypeName, `) XXX_WellKnownType() string { return "`, enum.GetName(), `" }`)
 		g.P()
@@ -2883,6 +2895,8 @@ func (g *Generator) generateOneofDecls(mc *msgCtx, topLevelFields []topLevelFiel
 
 // generateMessageStruct adds the actual struct with it's members (but not methods) to the output.
 func (g *Generator) generateMessageStruct(mc *msgCtx, topLevelFields []topLevelField) {
+	// todo remove me 兼容go_out
+	return
 	comments := g.PrintComments(mc.message.path)
 
 	// Guarantee deprecation comments appear after user-provided comments.
@@ -2931,8 +2945,29 @@ func (g *Generator) isNiler(mc *msgCtx) {
 	g.generateIsNil(mc)
 }
 
+//func (g *Generator) genMessageReflectMethods(mc *msgCtx) {
+//	idx := f.allMessagesByPtr[m]
+//	typesVar := messageTypesVarName(f)
+//
+//	// ProtoReflect method.
+//	g.P("func (x *", mc.goName, ") ProtoReflect() ", protoreflectPackage.Ident("Message"), " {")
+//	g.P("mi := &", typesVar, "[", idx, "]")
+//	g.P("if ", protoimplPackage.Ident("UnsafeEnabled"), " && x != nil {")
+//	g.P("ms := ", protoimplPackage.Ident("X"), ".MessageStateOf(", protoimplPackage.Ident("Pointer"), "(x))")
+//	g.P("if ms.LoadMessageInfo() == nil {")
+//	g.P("ms.StoreMessageInfo(mi)")
+//	g.P("}")
+//	g.P("return ms")
+//	g.P("}")
+//	g.P("return mi.MessageOf(x)")
+//	g.P("}")
+//	g.P()
+//}
+
 // generateCommonMethods adds methods to the message that are not on a per field basis.
 func (g *Generator) generateCommonMethods(mc *msgCtx) {
+	// todo remove me
+	return
 	// Reset, String and ProtoMessage methods.
 	g.P("func (m *", mc.goName, ") Reset() { *m = ", mc.goName, "{} }")
 	if gogoproto.EnabledGoStringer(g.file.FileDescriptorProto, mc.message.DescriptorProto) {

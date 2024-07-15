@@ -7,7 +7,7 @@ import (
 	bytes "bytes"
 	fmt "fmt"
 	_ "github.com/coderyw/protobuf/gogoproto"
-	github_com_gogo_protobuf_proto "github.com/coderyw/protobuf/proto"
+	github_com_coderyw_protobuf_proto "github.com/coderyw/protobuf/proto"
 	proto "github.com/coderyw/protobuf/proto"
 	io "io"
 	math "math"
@@ -25,7 +25,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 type MyExtendable struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -62,7 +62,7 @@ func (m *MyExtendable) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return xxx_messageInfo_MyExtendable.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -80,6 +80,11 @@ func (m *MyExtendable) XXX_DiscardUnknown() {
 }
 
 var xxx_messageInfo_MyExtendable proto.InternalMessageInfo
+
+func (m *MyExtendable) IsNil() bool {
+	return m == nil
+
+}
 
 type Foo struct {
 	IntFoo               int64    `protobuf:"varint,1,opt,name=intFoo" json:"intFoo"`
@@ -101,7 +106,7 @@ func (m *Foo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return xxx_messageInfo_Foo.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
-		n, err := m.MarshalTo(b)
+		n, err := m.MarshalToSizedBuffer(b)
 		if err != nil {
 			return nil, err
 		}
@@ -119,6 +124,18 @@ func (m *Foo) XXX_DiscardUnknown() {
 }
 
 var xxx_messageInfo_Foo proto.InternalMessageInfo
+
+func (m *Foo) SetIntFoo_(val int64) {
+	if m != nil {
+		m.IntFoo = val
+	}
+
+}
+
+func (m *Foo) IsNil() bool {
+	return m == nil
+
+}
 
 var E_Foos = &proto.ExtensionDesc{
 	ExtendedType:  (*MyExtendable)(nil),
@@ -138,21 +155,21 @@ func init() {
 func init() { proto.RegisterFile("setextensionbytes.proto", fileDescriptor_41b8000ad7d06fe7) }
 
 var fileDescriptor_41b8000ad7d06fe7 = []byte{
-	// 210 bytes of a gzipped FileDescriptorProto
+	// 216 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x2f, 0x4e, 0x2d, 0x49,
 	0xad, 0x28, 0x49, 0xcd, 0x2b, 0xce, 0xcc, 0xcf, 0x4b, 0xaa, 0x2c, 0x49, 0x2d, 0xd6, 0x2b, 0x28,
-	0xca, 0x2f, 0xc9, 0x17, 0x12, 0xc4, 0x90, 0x90, 0xd2, 0x4d, 0xcf, 0x2c, 0xc9, 0x28, 0x4d, 0xd2,
-	0x4b, 0xce, 0xcf, 0xd5, 0x4f, 0xcf, 0x4f, 0xcf, 0xd7, 0x07, 0xab, 0x4c, 0x2a, 0x4d, 0x03, 0xf3,
-	0xc0, 0x1c, 0x30, 0x0b, 0x62, 0x82, 0x92, 0x1c, 0x17, 0x8f, 0x6f, 0xa5, 0x2b, 0xc8, 0x88, 0x94,
-	0xc4, 0xa4, 0x9c, 0x54, 0x2d, 0x16, 0x0e, 0x46, 0x01, 0x6e, 0x2b, 0x8e, 0x0d, 0x0b, 0xe4, 0x19,
-	0x4e, 0x2c, 0x94, 0x67, 0x50, 0x52, 0xe6, 0x62, 0x76, 0xcb, 0xcf, 0x17, 0x92, 0xe1, 0x62, 0xcb,
-	0xcc, 0x2b, 0x71, 0xcb, 0xcf, 0x97, 0x60, 0x54, 0x60, 0xd4, 0x60, 0x76, 0x62, 0x39, 0x71, 0x4f,
-	0x9e, 0x21, 0x08, 0x2a, 0x66, 0xe5, 0xcd, 0xc5, 0xe2, 0x96, 0x9f, 0x5f, 0x2c, 0x24, 0xaf, 0x87,
-	0xe9, 0x50, 0x64, 0xd3, 0x25, 0x98, 0x14, 0x18, 0x35, 0xb8, 0x8d, 0xc4, 0xb0, 0x28, 0x73, 0xcb,
-	0xcf, 0x0f, 0x02, 0x1b, 0xe2, 0x24, 0x73, 0xe2, 0xa1, 0x1c, 0xc3, 0x8d, 0x87, 0x72, 0x0c, 0x0d,
-	0x8f, 0xe4, 0x18, 0x57, 0x3c, 0x92, 0x63, 0x7c, 0xf0, 0x48, 0x8e, 0xf1, 0xc7, 0x23, 0x39, 0xc6,
-	0x86, 0xc7, 0x72, 0x8c, 0x80, 0x00, 0x00, 0x00, 0xff, 0xff, 0x32, 0xc1, 0xe9, 0x65, 0x0b, 0x01,
-	0x00, 0x00,
+	0xca, 0x2f, 0xc9, 0x17, 0x12, 0xc4, 0x90, 0x90, 0x32, 0x48, 0xcf, 0x2c, 0xc9, 0x28, 0x4d, 0xd2,
+	0x4b, 0xce, 0xcf, 0xd5, 0x4f, 0xce, 0x4f, 0x49, 0x2d, 0xaa, 0x2c, 0xd7, 0x07, 0x2b, 0x4e, 0x2a,
+	0x4d, 0xd3, 0x4f, 0xcf, 0x4f, 0xcf, 0x07, 0x73, 0xc0, 0x2c, 0x88, 0x21, 0x4a, 0x72, 0x5c, 0x3c,
+	0xbe, 0x95, 0xae, 0x20, 0x53, 0x52, 0x12, 0x93, 0x72, 0x52, 0xb5, 0x58, 0x38, 0x18, 0x05, 0xb8,
+	0xad, 0x38, 0x36, 0x2c, 0x90, 0x67, 0x38, 0xb1, 0x50, 0x9e, 0x41, 0x49, 0x99, 0x8b, 0xd9, 0x2d,
+	0x3f, 0x5f, 0x48, 0x86, 0x8b, 0x2d, 0x33, 0xaf, 0xc4, 0x2d, 0x3f, 0x5f, 0x82, 0x51, 0x81, 0x51,
+	0x83, 0xd9, 0x89, 0xe5, 0xc4, 0x3d, 0x79, 0x86, 0x20, 0xa8, 0x98, 0x95, 0x37, 0x17, 0x8b, 0x5b,
+	0x7e, 0x7e, 0xb1, 0x90, 0xbc, 0x1e, 0xa6, 0x5b, 0x91, 0x4d, 0x97, 0x60, 0x52, 0x60, 0xd4, 0xe0,
+	0x36, 0x12, 0xc3, 0xa2, 0xcc, 0x2d, 0x3f, 0x3f, 0x08, 0x6c, 0x88, 0x93, 0xcc, 0x89, 0x87, 0x72,
+	0x0c, 0x37, 0x1e, 0xca, 0x31, 0x34, 0x3c, 0x92, 0x63, 0x5c, 0xf1, 0x48, 0x8e, 0xf1, 0xc1, 0x23,
+	0x39, 0xc6, 0x1f, 0x8f, 0xe4, 0x18, 0x1b, 0x1e, 0xcb, 0x31, 0x02, 0x02, 0x00, 0x00, 0xff, 0xff,
+	0xa7, 0x28, 0xb7, 0xb7, 0x0e, 0x01, 0x00, 0x00,
 }
 
 func (this *MyExtendable) Equal(that interface{}) bool {
@@ -212,7 +229,7 @@ func (this *Foo) Equal(that interface{}) bool {
 func (m *MyExtendable) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -220,23 +237,30 @@ func (m *MyExtendable) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *MyExtendable) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MyExtendable) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if m.XXX_extensions != nil {
-		i += copy(dAtA[i:], m.XXX_extensions)
-	}
 	if m.XXX_unrecognized != nil {
-		i += copy(dAtA[i:], m.XXX_unrecognized)
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
 	}
-	return i, nil
+	if m.XXX_extensions != nil {
+		i -= len(m.XXX_extensions)
+		copy(dAtA[i:], m.XXX_extensions)
+	}
+	return len(dAtA) - i, nil
 }
 
 func (m *Foo) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
-	n, err := m.MarshalTo(dAtA)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
 	if err != nil {
 		return nil, err
 	}
@@ -244,27 +268,35 @@ func (m *Foo) Marshal() (dAtA []byte, err error) {
 }
 
 func (m *Foo) MarshalTo(dAtA []byte) (int, error) {
-	var i int
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *Foo) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	dAtA[i] = 0x8
-	i++
-	i = encodeVarintSetextensionbytes(dAtA, i, uint64(m.IntFoo))
 	if m.XXX_unrecognized != nil {
-		i += copy(dAtA[i:], m.XXX_unrecognized)
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
 	}
-	return i, nil
+	i = encodeVarintSetextensionbytes(dAtA, i, uint64(m.IntFoo))
+	i--
+	dAtA[i] = 0x8
+	return len(dAtA) - i, nil
 }
 
 func encodeVarintSetextensionbytes(dAtA []byte, offset int, v uint64) int {
+	offset -= sovSetextensionbytes(v)
+	base := offset
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
 		v >>= 7
 		offset++
 	}
 	dAtA[offset] = uint8(v)
-	return offset + 1
+	return base
 }
 func (m *MyExtendable) Size() (n int) {
 	if m == nil {
@@ -305,7 +337,7 @@ func (this *MyExtendable) String() string {
 		return "nil"
 	}
 	s := strings.Join([]string{`&MyExtendable{`,
-		`XXX_extensions:` + github_com_gogo_protobuf_proto.StringFromExtensionsBytes(this.XXX_extensions) + `,`,
+		`XXX_extensions:` + github_com_coderyw_protobuf_proto.StringFromExtensionsBytes(this.XXX_extensions) + `,`,
 		`XXX_unrecognized:` + fmt.Sprintf("%v", this.XXX_unrecognized) + `,`,
 		`}`,
 	}, "")
@@ -374,16 +406,13 @@ func (m *MyExtendable) Unmarshal(dAtA []byte) error {
 				if err != nil {
 					return err
 				}
-				if skippy < 0 {
-					return ErrInvalidLengthSetextensionbytes
-				}
-				if (iNdEx + skippy) < 0 {
+				if (skippy < 0) || (iNdEx+skippy) < 0 {
 					return ErrInvalidLengthSetextensionbytes
 				}
 				if (iNdEx + skippy) > l {
 					return io.ErrUnexpectedEOF
 				}
-				github_com_gogo_protobuf_proto.AppendExtension(m, int32(fieldNum), dAtA[iNdEx:iNdEx+skippy])
+				github_com_coderyw_protobuf_proto.AppendExtension(m, int32(fieldNum), dAtA[iNdEx:iNdEx+skippy])
 				iNdEx += skippy
 			} else {
 				iNdEx = preIndex
@@ -391,10 +420,7 @@ func (m *MyExtendable) Unmarshal(dAtA []byte) error {
 				if err != nil {
 					return err
 				}
-				if skippy < 0 {
-					return ErrInvalidLengthSetextensionbytes
-				}
-				if (iNdEx + skippy) < 0 {
+				if (skippy < 0) || (iNdEx+skippy) < 0 {
 					return ErrInvalidLengthSetextensionbytes
 				}
 				if (iNdEx + skippy) > l {
@@ -465,10 +491,7 @@ func (m *Foo) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthSetextensionbytes
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthSetextensionbytes
 			}
 			if (iNdEx + skippy) > l {
@@ -487,6 +510,7 @@ func (m *Foo) Unmarshal(dAtA []byte) error {
 func skipSetextensionbytes(dAtA []byte) (n int, err error) {
 	l := len(dAtA)
 	iNdEx := 0
+	depth := 0
 	for iNdEx < l {
 		var wire uint64
 		for shift := uint(0); ; shift += 7 {
@@ -518,10 +542,8 @@ func skipSetextensionbytes(dAtA []byte) (n int, err error) {
 					break
 				}
 			}
-			return iNdEx, nil
 		case 1:
 			iNdEx += 8
-			return iNdEx, nil
 		case 2:
 			var length int
 			for shift := uint(0); ; shift += 7 {
@@ -542,55 +564,30 @@ func skipSetextensionbytes(dAtA []byte) (n int, err error) {
 				return 0, ErrInvalidLengthSetextensionbytes
 			}
 			iNdEx += length
-			if iNdEx < 0 {
-				return 0, ErrInvalidLengthSetextensionbytes
-			}
-			return iNdEx, nil
 		case 3:
-			for {
-				var innerWire uint64
-				var start int = iNdEx
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return 0, ErrIntOverflowSetextensionbytes
-					}
-					if iNdEx >= l {
-						return 0, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					innerWire |= (uint64(b) & 0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				innerWireType := int(innerWire & 0x7)
-				if innerWireType == 4 {
-					break
-				}
-				next, err := skipSetextensionbytes(dAtA[start:])
-				if err != nil {
-					return 0, err
-				}
-				iNdEx = start + next
-				if iNdEx < 0 {
-					return 0, ErrInvalidLengthSetextensionbytes
-				}
-			}
-			return iNdEx, nil
+			depth++
 		case 4:
-			return iNdEx, nil
+			if depth == 0 {
+				return 0, ErrUnexpectedEndOfGroupSetextensionbytes
+			}
+			depth--
 		case 5:
 			iNdEx += 4
-			return iNdEx, nil
 		default:
 			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
 		}
+		if iNdEx < 0 {
+			return 0, ErrInvalidLengthSetextensionbytes
+		}
+		if depth == 0 {
+			return iNdEx, nil
+		}
 	}
-	panic("unreachable")
+	return 0, io.ErrUnexpectedEOF
 }
 
 var (
-	ErrInvalidLengthSetextensionbytes = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowSetextensionbytes   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthSetextensionbytes        = fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowSetextensionbytes          = fmt.Errorf("proto: integer overflow")
+	ErrUnexpectedEndOfGroupSetextensionbytes = fmt.Errorf("proto: unexpected end of group")
 )

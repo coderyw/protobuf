@@ -7,7 +7,7 @@ import (
 	fmt "fmt"
 	proto "github.com/coderyw/protobuf/proto"
 	test_proto "github.com/coderyw/protobuf/proto/test_proto"
-	types "github.com/coderyw/protobuf/types"
+	anypb "google.golang.org/protobuf/types/known/anypb"
 	math "math"
 )
 
@@ -68,8 +68,8 @@ type Message struct {
 	Terrain              map[string]*Nested                 `protobuf:"bytes,10,rep,name=terrain,proto3" json:"terrain,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	Proto2Field          *test_proto.SubDefaults            `protobuf:"bytes,11,opt,name=proto2_field,json=proto2Field,proto3" json:"proto2_field,omitempty"`
 	Proto2Value          map[string]*test_proto.SubDefaults `protobuf:"bytes,13,rep,name=proto2_value,json=proto2Value,proto3" json:"proto2_value,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	Anything             *types.Any                         `protobuf:"bytes,14,opt,name=anything,proto3" json:"anything,omitempty"`
-	ManyThings           []*types.Any                       `protobuf:"bytes,15,rep,name=many_things,json=manyThings,proto3" json:"many_things,omitempty"`
+	Anything             *anypb.Any                         `protobuf:"bytes,14,opt,name=anything,proto3" json:"anything,omitempty"`
+	ManyThings           []*anypb.Any                       `protobuf:"bytes,15,rep,name=many_things,json=manyThings,proto3" json:"many_things,omitempty"`
 	Submessage           *Message                           `protobuf:"bytes,17,opt,name=submessage,proto3" json:"submessage,omitempty"`
 	Children             []*Message                         `protobuf:"bytes,18,rep,name=children,proto3" json:"children,omitempty"`
 	StringMap            map[string]string                  `protobuf:"bytes,20,rep,name=string_map,json=stringMap,proto3" json:"string_map,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
@@ -200,14 +200,14 @@ func (m *Message) GetProto2Value() map[string]*test_proto.SubDefaults {
 	return nil
 }
 
-func (m *Message) GetAnything() *types.Any {
+func (m *Message) GetAnything() *anypb.Any {
 	if m != nil {
 		return m.Anything
 	}
 	return nil
 }
 
-func (m *Message) GetManyThings() []*types.Any {
+func (m *Message) GetManyThings() []*anypb.Any {
 	if m != nil {
 		return m.ManyThings
 	}
@@ -233,6 +233,144 @@ func (m *Message) GetStringMap() map[string]string {
 		return m.StringMap
 	}
 	return nil
+}
+
+func (m *Message) SetName_(val string) {
+	if m != nil {
+		m.Name = val
+	}
+
+}
+
+func (m *Message) SetHilarity_(val Message_Humour) {
+	if m != nil {
+		m.Hilarity = val
+	}
+
+}
+
+func (m *Message) SetHeightInCm_(val uint32) {
+	if m != nil {
+		m.HeightInCm = val
+	}
+
+}
+
+func (m *Message) SetData_(val []byte) {
+	if m != nil {
+		m.Data = val
+	}
+	return
+}
+
+func (m *Message) SetResultCount_(val int64) {
+	if m != nil {
+		m.ResultCount = val
+	}
+
+}
+
+func (m *Message) SetTrueScotsman_(val bool) {
+	if m != nil {
+		m.TrueScotsman = val
+	}
+
+}
+
+func (m *Message) SetScore_(val float32) {
+	if m != nil {
+		m.Score = val
+	}
+
+}
+
+func (m *Message) SetKey_(val []uint64) {
+	if m != nil {
+		m.Key = val
+	}
+	return
+}
+
+func (m *Message) SetShortKey_(val []int32) {
+	if m != nil {
+		m.ShortKey = val
+	}
+	return
+}
+
+func (m *Message) SetNested_(val *Nested) {
+	if m != nil {
+		m.Nested = val
+	}
+	return
+}
+
+func (m *Message) SetRFunny_(val []Message_Humour) {
+	if m != nil {
+		m.RFunny = val
+	}
+	return
+}
+
+func (m *Message) SetTerrain_(val map[string]*Nested) {
+	if m != nil {
+		m.Terrain = val
+	}
+	return
+}
+
+func (m *Message) SetProto2Field_(val *test_proto.SubDefaults) {
+	if m != nil {
+		m.Proto2Field = val
+	}
+	return
+}
+
+func (m *Message) SetProto2Value_(val map[string]*test_proto.SubDefaults) {
+	if m != nil {
+		m.Proto2Value = val
+	}
+	return
+}
+
+func (m *Message) SetAnything_(val *anypb.Any) {
+	if m != nil {
+		m.Anything = val
+	}
+	return
+}
+
+func (m *Message) SetManyThings_(val []*anypb.Any) {
+	if m != nil {
+		m.ManyThings = val
+	}
+	return
+}
+
+func (m *Message) SetSubmessage_(val *Message) {
+	if m != nil {
+		m.Submessage = val
+	}
+	return
+}
+
+func (m *Message) SetChildren_(val []*Message) {
+	if m != nil {
+		m.Children = val
+	}
+	return
+}
+
+func (m *Message) SetStringMap_(val map[string]string) {
+	if m != nil {
+		m.StringMap = val
+	}
+	return
+}
+
+func (m *Message) IsNil() bool {
+	return m == nil
+
 }
 
 type Nested struct {
@@ -281,6 +419,25 @@ func (m *Nested) GetCute() bool {
 	return false
 }
 
+func (m *Nested) SetBunny_(val string) {
+	if m != nil {
+		m.Bunny = val
+	}
+
+}
+
+func (m *Nested) SetCute_(val bool) {
+	if m != nil {
+		m.Cute = val
+	}
+
+}
+
+func (m *Nested) IsNil() bool {
+	return m == nil
+
+}
+
 type MessageWithMap struct {
 	ByteMapping          map[bool][]byte `protobuf:"bytes,1,rep,name=byte_mapping,json=byteMapping,proto3" json:"byte_mapping,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
@@ -317,6 +474,18 @@ func (m *MessageWithMap) GetByteMapping() map[bool][]byte {
 		return m.ByteMapping
 	}
 	return nil
+}
+
+func (m *MessageWithMap) SetByteMapping_(val map[bool][]byte) {
+	if m != nil {
+		m.ByteMapping = val
+	}
+	return
+}
+
+func (m *MessageWithMap) IsNil() bool {
+	return m == nil
+
 }
 
 type IntMap struct {
@@ -357,6 +526,18 @@ func (m *IntMap) GetRtt() map[int32]int32 {
 	return nil
 }
 
+func (m *IntMap) SetRtt_(val map[int32]int32) {
+	if m != nil {
+		m.Rtt = val
+	}
+	return
+}
+
+func (m *IntMap) IsNil() bool {
+	return m == nil
+
+}
+
 type IntMaps struct {
 	Maps                 []*IntMap `protobuf:"bytes,1,rep,name=maps,proto3" json:"maps,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
@@ -395,10 +576,23 @@ func (m *IntMaps) GetMaps() []*IntMap {
 	return nil
 }
 
+func (m *IntMaps) SetMaps_(val []*IntMap) {
+	if m != nil {
+		m.Maps = val
+	}
+	return
+}
+
+func (m *IntMaps) IsNil() bool {
+	return m == nil
+
+}
+
 type TestUTF8 struct {
 	Scalar string   `protobuf:"bytes,1,opt,name=scalar,proto3" json:"scalar,omitempty"`
 	Vector []string `protobuf:"bytes,2,rep,name=vector,proto3" json:"vector,omitempty"`
 	// Types that are valid to be assigned to Oneof:
+	//
 	//	*TestUTF8_Field
 	Oneof                isTestUTF8_Oneof `protobuf_oneof:"oneof"`
 	MapKey               map[string]int64 `protobuf:"bytes,4,rep,name=map_key,json=mapKey,proto3" json:"map_key,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
@@ -482,6 +676,39 @@ func (m *TestUTF8) GetMapValue() map[int64]string {
 		return m.MapValue
 	}
 	return nil
+}
+
+func (m *TestUTF8) SetScalar_(val string) {
+	if m != nil {
+		m.Scalar = val
+	}
+
+}
+
+func (m *TestUTF8) SetVector_(val []string) {
+	if m != nil {
+		m.Vector = val
+	}
+	return
+}
+
+func (m *TestUTF8) SetMapKey_(val map[string]int64) {
+	if m != nil {
+		m.MapKey = val
+	}
+	return
+}
+
+func (m *TestUTF8) SetMapValue_(val map[int64]string) {
+	if m != nil {
+		m.MapValue = val
+	}
+	return
+}
+
+func (m *TestUTF8) IsNil() bool {
+	return m == nil
+
 }
 
 // XXX_OneofWrappers is for the internal use of the proto package.

@@ -86,6 +86,18 @@ func (m *Simple3) GetDub() float64 {
 	return 0
 }
 
+func (m *Simple3) SetDub_(val float64) {
+	if m != nil {
+		m.Dub = val
+	}
+
+}
+
+func (m *Simple3) IsNil() bool {
+	return m == nil
+
+}
+
 type SimpleSlice3 struct {
 	Slices               []string `protobuf:"bytes,1,rep,name=slices,proto3" json:"slices,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -122,6 +134,18 @@ func (m *SimpleSlice3) GetSlices() []string {
 		return m.Slices
 	}
 	return nil
+}
+
+func (m *SimpleSlice3) SetSlices_(val []string) {
+	if m != nil {
+		m.Slices = val
+	}
+	return
+}
+
+func (m *SimpleSlice3) IsNil() bool {
+	return m == nil
+
 }
 
 type SimpleMap3 struct {
@@ -162,6 +186,18 @@ func (m *SimpleMap3) GetStringy() map[string]string {
 	return nil
 }
 
+func (m *SimpleMap3) SetStringy_(val map[string]string) {
+	if m != nil {
+		m.Stringy = val
+	}
+	return
+}
+
+func (m *SimpleMap3) IsNil() bool {
+	return m == nil
+
+}
+
 type SimpleNull3 struct {
 	Simple               *Simple3 `protobuf:"bytes,1,opt,name=simple,proto3" json:"simple,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -198,6 +234,18 @@ func (m *SimpleNull3) GetSimple() *Simple3 {
 		return m.Simple
 	}
 	return nil
+}
+
+func (m *SimpleNull3) SetSimple_(val *Simple3) {
+	if m != nil {
+		m.Simple = val
+	}
+	return
+}
+
+func (m *SimpleNull3) IsNil() bool {
+	return m == nil
+
 }
 
 type Mappy struct {
@@ -308,6 +356,81 @@ func (m *Mappy) GetU64Booly() map[uint64]bool {
 		return m.U64Booly
 	}
 	return nil
+}
+
+func (m *Mappy) SetNummy_(val map[int64]int32) {
+	if m != nil {
+		m.Nummy = val
+	}
+	return
+}
+
+func (m *Mappy) SetStrry_(val map[string]string) {
+	if m != nil {
+		m.Strry = val
+	}
+	return
+}
+
+func (m *Mappy) SetObjjy_(val map[int32]*Simple3) {
+	if m != nil {
+		m.Objjy = val
+	}
+	return
+}
+
+func (m *Mappy) SetBuggy_(val map[int64]string) {
+	if m != nil {
+		m.Buggy = val
+	}
+	return
+}
+
+func (m *Mappy) SetBooly_(val map[bool]bool) {
+	if m != nil {
+		m.Booly = val
+	}
+	return
+}
+
+func (m *Mappy) SetEnumy_(val map[string]Numeral) {
+	if m != nil {
+		m.Enumy = val
+	}
+	return
+}
+
+func (m *Mappy) SetS32Booly_(val map[int32]bool) {
+	if m != nil {
+		m.S32Booly = val
+	}
+	return
+}
+
+func (m *Mappy) SetS64Booly_(val map[int64]bool) {
+	if m != nil {
+		m.S64Booly = val
+	}
+	return
+}
+
+func (m *Mappy) SetU32Booly_(val map[uint32]bool) {
+	if m != nil {
+		m.U32Booly = val
+	}
+	return
+}
+
+func (m *Mappy) SetU64Booly_(val map[uint64]bool) {
+	if m != nil {
+		m.U64Booly = val
+	}
+	return
+}
+
+func (m *Mappy) IsNil() bool {
+	return m == nil
+
 }
 
 func init() {

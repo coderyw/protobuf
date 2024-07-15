@@ -4,13 +4,10 @@
 package fuzztests
 
 import (
-	encoding_binary "encoding/binary"
 	fmt "fmt"
 	_ "github.com/coderyw/protobuf/gogoproto"
 	proto "github.com/coderyw/protobuf/proto"
-	io "io"
 	math "math"
-	math_bits "math/bits"
 	reflect "reflect"
 	strings "strings"
 )
@@ -39,31 +36,27 @@ func (*Nil) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e61ff73369f13d2, []int{0}
 }
 func (m *Nil) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
+	return xxx_messageInfo_Nil.Unmarshal(m, b)
 }
 func (m *Nil) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_Nil.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	return xxx_messageInfo_Nil.Marshal(b, m, deterministic)
 }
 func (m *Nil) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_Nil.Merge(m, src)
 }
 func (m *Nil) XXX_Size() int {
-	return m.Size()
+	return xxx_messageInfo_Nil.Size(m)
 }
 func (m *Nil) XXX_DiscardUnknown() {
 	xxx_messageInfo_Nil.DiscardUnknown(m)
 }
 
 var xxx_messageInfo_Nil proto.InternalMessageInfo
+
+func (m *Nil) IsNil() bool {
+	return m == nil
+
+}
 
 type NinRepPackedNative struct {
 	Field1               []float64 `protobuf:"fixed64,1,rep,packed,name=Field1" json:"Field1,omitempty"`
@@ -91,25 +84,16 @@ func (*NinRepPackedNative) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e61ff73369f13d2, []int{1}
 }
 func (m *NinRepPackedNative) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
+	return xxx_messageInfo_NinRepPackedNative.Unmarshal(m, b)
 }
 func (m *NinRepPackedNative) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_NinRepPackedNative.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	return xxx_messageInfo_NinRepPackedNative.Marshal(b, m, deterministic)
 }
 func (m *NinRepPackedNative) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_NinRepPackedNative.Merge(m, src)
 }
 func (m *NinRepPackedNative) XXX_Size() int {
-	return m.Size()
+	return xxx_messageInfo_NinRepPackedNative.Size(m)
 }
 func (m *NinRepPackedNative) XXX_DiscardUnknown() {
 	xxx_messageInfo_NinRepPackedNative.DiscardUnknown(m)
@@ -208,6 +192,102 @@ func (m *NinRepPackedNative) GetField13() []bool {
 	return nil
 }
 
+func (m *NinRepPackedNative) SetField1_(val []float64) {
+	if m != nil {
+		m.Field1 = val
+	}
+	return
+}
+
+func (m *NinRepPackedNative) SetField2_(val []float32) {
+	if m != nil {
+		m.Field2 = val
+	}
+	return
+}
+
+func (m *NinRepPackedNative) SetField3_(val []int32) {
+	if m != nil {
+		m.Field3 = val
+	}
+	return
+}
+
+func (m *NinRepPackedNative) SetField4_(val []int64) {
+	if m != nil {
+		m.Field4 = val
+	}
+	return
+}
+
+func (m *NinRepPackedNative) SetField5_(val []uint32) {
+	if m != nil {
+		m.Field5 = val
+	}
+	return
+}
+
+func (m *NinRepPackedNative) SetField6_(val []uint64) {
+	if m != nil {
+		m.Field6 = val
+	}
+	return
+}
+
+func (m *NinRepPackedNative) SetField7_(val []int32) {
+	if m != nil {
+		m.Field7 = val
+	}
+	return
+}
+
+func (m *NinRepPackedNative) SetField8_(val []int64) {
+	if m != nil {
+		m.Field8 = val
+	}
+	return
+}
+
+func (m *NinRepPackedNative) SetField9_(val []uint32) {
+	if m != nil {
+		m.Field9 = val
+	}
+	return
+}
+
+func (m *NinRepPackedNative) SetField10_(val []int32) {
+	if m != nil {
+		m.Field10 = val
+	}
+	return
+}
+
+func (m *NinRepPackedNative) SetField11_(val []uint64) {
+	if m != nil {
+		m.Field11 = val
+	}
+	return
+}
+
+func (m *NinRepPackedNative) SetField12_(val []int64) {
+	if m != nil {
+		m.Field12 = val
+	}
+	return
+}
+
+func (m *NinRepPackedNative) SetField13_(val []bool) {
+	if m != nil {
+		m.Field13 = val
+	}
+	return
+}
+
+func (m *NinRepPackedNative) IsNil() bool {
+	return m == nil
+
+}
+
 type NinOptNative struct {
 	Field1               *float64 `protobuf:"fixed64,1,opt,name=Field1" json:"Field1,omitempty"`
 	Field2               *float32 `protobuf:"fixed32,2,opt,name=Field2" json:"Field2,omitempty"`
@@ -236,25 +316,16 @@ func (*NinOptNative) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e61ff73369f13d2, []int{2}
 }
 func (m *NinOptNative) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
+	return xxx_messageInfo_NinOptNative.Unmarshal(m, b)
 }
 func (m *NinOptNative) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_NinOptNative.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	return xxx_messageInfo_NinOptNative.Marshal(b, m, deterministic)
 }
 func (m *NinOptNative) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_NinOptNative.Merge(m, src)
 }
 func (m *NinOptNative) XXX_Size() int {
-	return m.Size()
+	return xxx_messageInfo_NinOptNative.Size(m)
 }
 func (m *NinOptNative) XXX_DiscardUnknown() {
 	xxx_messageInfo_NinOptNative.DiscardUnknown(m)
@@ -367,6 +438,116 @@ func (m *NinOptNative) GetField15() []byte {
 	return nil
 }
 
+func (m *NinOptNative) SetField1_(val float64) {
+	if m != nil {
+		*m.Field1 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField2_(val float32) {
+	if m != nil {
+		*m.Field2 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField3_(val int32) {
+	if m != nil {
+		*m.Field3 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField4_(val int64) {
+	if m != nil {
+		*m.Field4 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField5_(val uint32) {
+	if m != nil {
+		*m.Field5 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField6_(val uint64) {
+	if m != nil {
+		*m.Field6 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField7_(val int32) {
+	if m != nil {
+		*m.Field7 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField8_(val int64) {
+	if m != nil {
+		*m.Field8 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField9_(val uint32) {
+	if m != nil {
+		*m.Field9 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField10_(val int32) {
+	if m != nil {
+		*m.Field10 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField11_(val uint64) {
+	if m != nil {
+		*m.Field11 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField12_(val int64) {
+	if m != nil {
+		*m.Field12 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField13_(val bool) {
+	if m != nil {
+		*m.Field13 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField14_(val string) {
+	if m != nil {
+		*m.Field14 = val
+	}
+
+}
+
+func (m *NinOptNative) SetField15_(val []byte) {
+	if m != nil {
+		m.Field15 = val
+	}
+	return
+}
+
+func (m *NinOptNative) IsNil() bool {
+	return m == nil
+
+}
+
 type NinOptStruct struct {
 	Field1               *float64      `protobuf:"fixed64,1,opt,name=Field1" json:"Field1,omitempty"`
 	Field2               *float32      `protobuf:"fixed32,2,opt,name=Field2" json:"Field2,omitempty"`
@@ -390,25 +571,16 @@ func (*NinOptStruct) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e61ff73369f13d2, []int{3}
 }
 func (m *NinOptStruct) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
+	return xxx_messageInfo_NinOptStruct.Unmarshal(m, b)
 }
 func (m *NinOptStruct) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_NinOptStruct.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
+	return xxx_messageInfo_NinOptStruct.Marshal(b, m, deterministic)
 }
 func (m *NinOptStruct) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_NinOptStruct.Merge(m, src)
 }
 func (m *NinOptStruct) XXX_Size() int {
-	return m.Size()
+	return xxx_messageInfo_NinOptStruct.Size(m)
 }
 func (m *NinOptStruct) XXX_DiscardUnknown() {
 	xxx_messageInfo_NinOptStruct.DiscardUnknown(m)
@@ -486,6 +658,81 @@ func (m *NinOptStruct) GetField15() []byte {
 	return nil
 }
 
+func (m *NinOptStruct) SetField1_(val float64) {
+	if m != nil {
+		*m.Field1 = val
+	}
+
+}
+
+func (m *NinOptStruct) SetField2_(val float32) {
+	if m != nil {
+		*m.Field2 = val
+	}
+
+}
+
+func (m *NinOptStruct) SetField3_(val *NinOptNative) {
+	if m != nil {
+		m.Field3 = val
+	}
+	return
+}
+
+func (m *NinOptStruct) SetField4_(val *NinOptNative) {
+	if m != nil {
+		m.Field4 = val
+	}
+	return
+}
+
+func (m *NinOptStruct) SetField6_(val uint64) {
+	if m != nil {
+		*m.Field6 = val
+	}
+
+}
+
+func (m *NinOptStruct) SetField7_(val int32) {
+	if m != nil {
+		*m.Field7 = val
+	}
+
+}
+
+func (m *NinOptStruct) SetField8_(val *NinOptNative) {
+	if m != nil {
+		m.Field8 = val
+	}
+	return
+}
+
+func (m *NinOptStruct) SetField13_(val bool) {
+	if m != nil {
+		*m.Field13 = val
+	}
+
+}
+
+func (m *NinOptStruct) SetField14_(val string) {
+	if m != nil {
+		*m.Field14 = val
+	}
+
+}
+
+func (m *NinOptStruct) SetField15_(val []byte) {
+	if m != nil {
+		m.Field15 = val
+	}
+	return
+}
+
+func (m *NinOptStruct) IsNil() bool {
+	return m == nil
+
+}
+
 func init() {
 	proto.RegisterType((*Nil)(nil), "fuzztests.Nil")
 	proto.RegisterType((*NinRepPackedNative)(nil), "fuzztests.NinRepPackedNative")
@@ -496,35 +743,35 @@ func init() {
 func init() { proto.RegisterFile("fuzz.proto", fileDescriptor_9e61ff73369f13d2) }
 
 var fileDescriptor_9e61ff73369f13d2 = []byte{
-	// 445 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0xd3, 0xbf, 0x6e, 0x1a, 0x41,
-	0x10, 0xc7, 0x71, 0xcd, 0x0d, 0x7f, 0xd7, 0x10, 0xf0, 0x15, 0x9b, 0x91, 0x15, 0xa1, 0x15, 0xd5,
-	0x34, 0xe1, 0xc2, 0x71, 0xd8, 0xb8, 0x75, 0x91, 0x92, 0x44, 0xce, 0x13, 0xd8, 0xf8, 0x4c, 0x4e,
-	0x71, 0x7c, 0xc8, 0x5e, 0x52, 0xb8, 0x4c, 0x95, 0x47, 0x4b, 0x97, 0x3c, 0x42, 0xc2, 0x13, 0xe4,
-	0x11, 0xa2, 0x9c, 0xcd, 0xec, 0x50, 0x59, 0x48, 0xe9, 0xee, 0xf6, 0xc3, 0x0a, 0xf1, 0xfd, 0x09,
-	0x63, 0xae, 0xd7, 0x0f, 0x0f, 0xa3, 0xd5, 0x5d, 0xe9, 0xcb, 0xb8, 0xfd, 0xef, 0xd9, 0xe7, 0xf7,
-	0xfe, 0xfe, 0xe8, 0xf5, 0xb2, 0xf0, 0x1f, 0xd7, 0x97, 0xa3, 0x45, 0xf9, 0x39, 0x59, 0x96, 0xcb,
-	0x32, 0xa9, 0x3e, 0x71, 0xb9, 0xbe, 0xae, 0xde, 0xaa, 0x97, 0xea, 0xe9, 0xf1, 0xe6, 0xb0, 0x6e,
-	0x70, 0x5e, 0xdc, 0x0c, 0xbf, 0xa1, 0x89, 0xe7, 0xc5, 0xed, 0x79, 0xbe, 0x7a, 0x7f, 0xb1, 0xf8,
-	0x94, 0x5f, 0xcd, 0x2f, 0x7c, 0xf1, 0x25, 0x8f, 0x8f, 0x4c, 0xe3, 0x6d, 0x91, 0xdf, 0x5c, 0x8d,
-	0x09, 0x1c, 0x32, 0x9c, 0x45, 0x7d, 0x38, 0x7f, 0x3a, 0x11, 0x4b, 0x29, 0x72, 0xc8, 0x91, 0xb2,
-	0x54, 0x6c, 0x42, 0xe8, 0x90, 0xeb, 0xca, 0x26, 0x62, 0x19, 0xd5, 0x1c, 0x32, 0x2a, 0xcb, 0xc4,
-	0xa6, 0x54, 0x77, 0xc8, 0x5d, 0x65, 0x53, 0xb1, 0x63, 0x6a, 0x38, 0xe4, 0x9a, 0xb2, 0x63, 0xb1,
-	0x13, 0x6a, 0x3a, 0xe4, 0x43, 0x65, 0x27, 0x62, 0x33, 0x6a, 0x39, 0xe4, 0x58, 0xd9, 0x4c, 0xec,
-	0x94, 0xda, 0x0e, 0xb9, 0xa9, 0xec, 0x34, 0x7e, 0x65, 0x9a, 0x8f, 0xbf, 0xf4, 0x0d, 0x19, 0x87,
-	0xdc, 0xab, 0x70, 0x7b, 0x14, 0x74, 0x4c, 0x07, 0x0e, 0xb9, 0xa1, 0x75, 0x1c, 0x34, 0xa5, 0x8e,
-	0x43, 0xee, 0x6b, 0x4d, 0x83, 0x4e, 0xa8, 0xeb, 0x90, 0x5b, 0x5a, 0x27, 0xc3, 0xaf, 0x68, 0x3a,
-	0xf3, 0xe2, 0xf6, 0xdd, 0xca, 0x3f, 0x8d, 0x60, 0xd5, 0x08, 0xc0, 0x61, 0x00, 0xab, 0x06, 0x00,
-	0x8e, 0x24, 0xbe, 0x55, 0xf1, 0x81, 0xeb, 0x12, 0xde, 0xaa, 0xf0, 0xc0, 0x28, 0xd1, 0xad, 0x8a,
-	0x0e, 0xdc, 0x95, 0xe0, 0x56, 0x05, 0x07, 0xae, 0x49, 0x6c, 0xab, 0x62, 0x03, 0x1f, 0x4a, 0x68,
-	0xab, 0x42, 0x03, 0xc7, 0x12, 0xd9, 0xaa, 0xc8, 0xc0, 0x4d, 0x09, 0x4c, 0x3a, 0x30, 0x70, 0x2f,
-	0xc4, 0x25, 0x1d, 0x17, 0xb8, 0x11, 0xc2, 0x92, 0x0e, 0x0b, 0xdc, 0x0f, 0x51, 0x49, 0x47, 0x05,
-	0x6e, 0x49, 0xd0, 0x20, 0x19, 0xbd, 0x70, 0xc0, 0xed, 0xad, 0x64, 0x41, 0xa6, 0xd4, 0x73, 0xc0,
-	0x9d, 0xad, 0x4c, 0x87, 0x3f, 0xa2, 0xed, 0x08, 0x1f, 0xfc, 0xdd, 0x7a, 0xe1, 0xf7, 0x1e, 0x21,
-	0xd9, 0x19, 0xe1, 0x20, 0x7d, 0x39, 0x92, 0xbf, 0xe8, 0x48, 0xaf, 0x2b, 0xeb, 0x24, 0x3b, 0xeb,
-	0x3c, 0x7b, 0x21, 0xdb, 0x7b, 0x9e, 0x64, 0x67, 0x9e, 0x67, 0xbf, 0x60, 0xf6, 0x7f, 0x8b, 0x9e,
-	0xf5, 0xff, 0xfc, 0x1e, 0xc0, 0xf7, 0xcd, 0x00, 0x7e, 0x6e, 0x06, 0xf0, 0x6b, 0x33, 0x80, 0xbf,
-	0x01, 0x00, 0x00, 0xff, 0xff, 0xc0, 0x67, 0xe2, 0xa2, 0xc1, 0x04, 0x00, 0x00,
+	// 437 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0xd3, 0xcf, 0x6e, 0xda, 0x40,
+	0x10, 0xc7, 0x71, 0x8d, 0x87, 0xbf, 0x1b, 0x28, 0xc4, 0x87, 0xed, 0x28, 0xaa, 0xaa, 0x15, 0xa7,
+	0x39, 0xe1, 0x60, 0x4c, 0x42, 0xae, 0x39, 0xf4, 0x48, 0xab, 0xf4, 0x09, 0x12, 0x70, 0xa8, 0xd5,
+	0x34, 0x46, 0x64, 0x69, 0xd5, 0x1c, 0x7b, 0xea, 0xdb, 0xf5, 0x19, 0xfa, 0x06, 0x7d, 0x84, 0xaa,
+	0x4e, 0x3c, 0x3b, 0x9c, 0x22, 0xa4, 0xde, 0xcc, 0x7e, 0x58, 0x21, 0xbe, 0x3f, 0xd9, 0x98, 0xdb,
+	0xdd, 0xe3, 0xe3, 0x78, 0xb3, 0x2d, 0x7d, 0x19, 0x77, 0xff, 0x3d, 0xfb, 0xfc, 0xc1, 0x3f, 0x9c,
+	0x9c, 0xae, 0x0b, 0xff, 0x69, 0x77, 0x33, 0x5e, 0x96, 0x5f, 0x92, 0x65, 0xb9, 0xca, 0xb7, 0xdf,
+	0xbf, 0x25, 0xd5, 0x97, 0x6e, 0x76, 0xb7, 0xc9, 0xba, 0x5c, 0x97, 0xd5, 0x87, 0xea, 0xe9, 0xe9,
+	0xf2, 0xa8, 0x69, 0x70, 0x51, 0xdc, 0x8d, 0x7e, 0xa2, 0x89, 0x17, 0xc5, 0xfd, 0x55, 0xbe, 0xf9,
+	0x70, 0xbd, 0xfc, 0x9c, 0xaf, 0x16, 0xd7, 0xbe, 0xf8, 0x9a, 0xc7, 0x27, 0xa6, 0xf5, 0xae, 0xc8,
+	0xef, 0x56, 0x13, 0x02, 0x87, 0x0c, 0x97, 0xd1, 0x10, 0xae, 0x9e, 0x4f, 0xc4, 0x52, 0x8a, 0x1c,
+	0x72, 0xa4, 0x2c, 0x15, 0x9b, 0x12, 0x3a, 0xe4, 0xa6, 0xb2, 0xa9, 0x58, 0x46, 0x0d, 0x87, 0x8c,
+	0xca, 0x32, 0xb1, 0x19, 0x35, 0x1d, 0x72, 0x5f, 0xd9, 0x4c, 0xec, 0x8c, 0x5a, 0x0e, 0xb9, 0xa1,
+	0xec, 0x4c, 0xec, 0x9c, 0xda, 0x0e, 0xf9, 0x58, 0xd9, 0xb9, 0xd8, 0x9c, 0x3a, 0x0e, 0x39, 0x56,
+	0x36, 0x17, 0xbb, 0xa0, 0xae, 0x43, 0x6e, 0x2b, 0xbb, 0x88, 0xdf, 0x98, 0xf6, 0xd3, 0x3f, 0x3d,
+	0x25, 0xe3, 0x90, 0x07, 0x15, 0xd6, 0x47, 0x41, 0x27, 0x74, 0xe4, 0x90, 0x5b, 0x5a, 0x27, 0x41,
+	0x53, 0xea, 0x39, 0xe4, 0xa1, 0xd6, 0x34, 0xe8, 0x94, 0xfa, 0x0e, 0xb9, 0xa3, 0x75, 0x3a, 0xfa,
+	0x81, 0xa6, 0xb7, 0x28, 0xee, 0xdf, 0x6f, 0xfc, 0xf3, 0x08, 0x56, 0x8d, 0x00, 0x1c, 0x06, 0xb0,
+	0x6a, 0x00, 0xe0, 0x48, 0xe2, 0x5b, 0x15, 0x1f, 0xb8, 0x29, 0xe1, 0xad, 0x0a, 0x0f, 0x8c, 0x12,
+	0xdd, 0xaa, 0xe8, 0xc0, 0x7d, 0x09, 0x6e, 0x55, 0x70, 0xe0, 0x86, 0xc4, 0xb6, 0x2a, 0x36, 0xf0,
+	0xb1, 0x84, 0xb6, 0x2a, 0x34, 0x70, 0x2c, 0x91, 0xad, 0x8a, 0x0c, 0xdc, 0x96, 0xc0, 0xa4, 0x03,
+	0x03, 0x0f, 0x42, 0x5c, 0xd2, 0x71, 0x81, 0x5b, 0x21, 0x2c, 0xe9, 0xb0, 0xc0, 0xc3, 0x10, 0x95,
+	0x74, 0x54, 0xe0, 0x8e, 0x04, 0x0d, 0x92, 0xd1, 0x2b, 0x07, 0xdc, 0xad, 0x25, 0x0b, 0x32, 0xa3,
+	0x81, 0x03, 0xee, 0xd5, 0x32, 0x1b, 0xfd, 0x8a, 0xea, 0x11, 0x3e, 0xfa, 0xed, 0x6e, 0xe9, 0x0f,
+	0x1e, 0x21, 0xd9, 0x1b, 0xe1, 0x28, 0x7d, 0x3d, 0x96, 0xb7, 0x74, 0xac, 0xd7, 0x95, 0x75, 0x92,
+	0xbd, 0x75, 0x5e, 0xbc, 0x90, 0x1d, 0x3c, 0x4f, 0xb2, 0x37, 0xcf, 0x8b, 0x3f, 0x30, 0xff, 0xbf,
+	0x45, 0x2f, 0x1b, 0x7f, 0x7e, 0xbf, 0x85, 0xbf, 0x01, 0x00, 0x00, 0xff, 0xff, 0xe0, 0x5b, 0xe8,
+	0xa3, 0xb8, 0x04, 0x00, 0x00,
 }
 
 func (this *Nil) GoString() string {
@@ -697,2348 +944,3 @@ func valueToGoStringFuzz(v interface{}, typ string) string {
 	pv := reflect.Indirect(rv).Interface()
 	return fmt.Sprintf("func(v %v) *%v { return &v } ( %#v )", typ, typ, pv)
 }
-func (m *Nil) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *Nil) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *Nil) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *NinRepPackedNative) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *NinRepPackedNative) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *NinRepPackedNative) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if len(m.Field13) > 0 {
-		for iNdEx := len(m.Field13) - 1; iNdEx >= 0; iNdEx-- {
-			i--
-			if m.Field13[iNdEx] {
-				dAtA[i] = 1
-			} else {
-				dAtA[i] = 0
-			}
-		}
-		i = encodeVarintFuzz(dAtA, i, uint64(len(m.Field13)))
-		i--
-		dAtA[i] = 0x6a
-	}
-	if len(m.Field12) > 0 {
-		for iNdEx := len(m.Field12) - 1; iNdEx >= 0; iNdEx-- {
-			i -= 8
-			encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.Field12[iNdEx]))
-		}
-		i = encodeVarintFuzz(dAtA, i, uint64(len(m.Field12)*8))
-		i--
-		dAtA[i] = 0x62
-	}
-	if len(m.Field11) > 0 {
-		for iNdEx := len(m.Field11) - 1; iNdEx >= 0; iNdEx-- {
-			i -= 8
-			encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(m.Field11[iNdEx]))
-		}
-		i = encodeVarintFuzz(dAtA, i, uint64(len(m.Field11)*8))
-		i--
-		dAtA[i] = 0x5a
-	}
-	if len(m.Field10) > 0 {
-		for iNdEx := len(m.Field10) - 1; iNdEx >= 0; iNdEx-- {
-			i -= 4
-			encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(m.Field10[iNdEx]))
-		}
-		i = encodeVarintFuzz(dAtA, i, uint64(len(m.Field10)*4))
-		i--
-		dAtA[i] = 0x52
-	}
-	if len(m.Field9) > 0 {
-		for iNdEx := len(m.Field9) - 1; iNdEx >= 0; iNdEx-- {
-			i -= 4
-			encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(m.Field9[iNdEx]))
-		}
-		i = encodeVarintFuzz(dAtA, i, uint64(len(m.Field9)*4))
-		i--
-		dAtA[i] = 0x4a
-	}
-	if len(m.Field8) > 0 {
-		var j1 int
-		dAtA3 := make([]byte, len(m.Field8)*10)
-		for _, num := range m.Field8 {
-			x2 := (uint64(num) << 1) ^ uint64((num >> 63))
-			for x2 >= 1<<7 {
-				dAtA3[j1] = uint8(uint64(x2)&0x7f | 0x80)
-				j1++
-				x2 >>= 7
-			}
-			dAtA3[j1] = uint8(x2)
-			j1++
-		}
-		i -= j1
-		copy(dAtA[i:], dAtA3[:j1])
-		i = encodeVarintFuzz(dAtA, i, uint64(j1))
-		i--
-		dAtA[i] = 0x42
-	}
-	if len(m.Field7) > 0 {
-		dAtA4 := make([]byte, len(m.Field7)*5)
-		var j5 int
-		for _, num := range m.Field7 {
-			x6 := (uint32(num) << 1) ^ uint32((num >> 31))
-			for x6 >= 1<<7 {
-				dAtA4[j5] = uint8(uint64(x6)&0x7f | 0x80)
-				j5++
-				x6 >>= 7
-			}
-			dAtA4[j5] = uint8(x6)
-			j5++
-		}
-		i -= j5
-		copy(dAtA[i:], dAtA4[:j5])
-		i = encodeVarintFuzz(dAtA, i, uint64(j5))
-		i--
-		dAtA[i] = 0x3a
-	}
-	if len(m.Field6) > 0 {
-		dAtA8 := make([]byte, len(m.Field6)*10)
-		var j7 int
-		for _, num := range m.Field6 {
-			for num >= 1<<7 {
-				dAtA8[j7] = uint8(uint64(num)&0x7f | 0x80)
-				num >>= 7
-				j7++
-			}
-			dAtA8[j7] = uint8(num)
-			j7++
-		}
-		i -= j7
-		copy(dAtA[i:], dAtA8[:j7])
-		i = encodeVarintFuzz(dAtA, i, uint64(j7))
-		i--
-		dAtA[i] = 0x32
-	}
-	if len(m.Field5) > 0 {
-		dAtA10 := make([]byte, len(m.Field5)*10)
-		var j9 int
-		for _, num := range m.Field5 {
-			for num >= 1<<7 {
-				dAtA10[j9] = uint8(uint64(num)&0x7f | 0x80)
-				num >>= 7
-				j9++
-			}
-			dAtA10[j9] = uint8(num)
-			j9++
-		}
-		i -= j9
-		copy(dAtA[i:], dAtA10[:j9])
-		i = encodeVarintFuzz(dAtA, i, uint64(j9))
-		i--
-		dAtA[i] = 0x2a
-	}
-	if len(m.Field4) > 0 {
-		dAtA12 := make([]byte, len(m.Field4)*10)
-		var j11 int
-		for _, num1 := range m.Field4 {
-			num := uint64(num1)
-			for num >= 1<<7 {
-				dAtA12[j11] = uint8(uint64(num)&0x7f | 0x80)
-				num >>= 7
-				j11++
-			}
-			dAtA12[j11] = uint8(num)
-			j11++
-		}
-		i -= j11
-		copy(dAtA[i:], dAtA12[:j11])
-		i = encodeVarintFuzz(dAtA, i, uint64(j11))
-		i--
-		dAtA[i] = 0x22
-	}
-	if len(m.Field3) > 0 {
-		dAtA14 := make([]byte, len(m.Field3)*10)
-		var j13 int
-		for _, num1 := range m.Field3 {
-			num := uint64(num1)
-			for num >= 1<<7 {
-				dAtA14[j13] = uint8(uint64(num)&0x7f | 0x80)
-				num >>= 7
-				j13++
-			}
-			dAtA14[j13] = uint8(num)
-			j13++
-		}
-		i -= j13
-		copy(dAtA[i:], dAtA14[:j13])
-		i = encodeVarintFuzz(dAtA, i, uint64(j13))
-		i--
-		dAtA[i] = 0x1a
-	}
-	if len(m.Field2) > 0 {
-		for iNdEx := len(m.Field2) - 1; iNdEx >= 0; iNdEx-- {
-			f15 := math.Float32bits(float32(m.Field2[iNdEx]))
-			i -= 4
-			encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(f15))
-		}
-		i = encodeVarintFuzz(dAtA, i, uint64(len(m.Field2)*4))
-		i--
-		dAtA[i] = 0x12
-	}
-	if len(m.Field1) > 0 {
-		for iNdEx := len(m.Field1) - 1; iNdEx >= 0; iNdEx-- {
-			f16 := math.Float64bits(float64(m.Field1[iNdEx]))
-			i -= 8
-			encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(f16))
-		}
-		i = encodeVarintFuzz(dAtA, i, uint64(len(m.Field1)*8))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *NinOptNative) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *NinOptNative) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *NinOptNative) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Field15 != nil {
-		i -= len(m.Field15)
-		copy(dAtA[i:], m.Field15)
-		i = encodeVarintFuzz(dAtA, i, uint64(len(m.Field15)))
-		i--
-		dAtA[i] = 0x7a
-	}
-	if m.Field14 != nil {
-		i -= len(*m.Field14)
-		copy(dAtA[i:], *m.Field14)
-		i = encodeVarintFuzz(dAtA, i, uint64(len(*m.Field14)))
-		i--
-		dAtA[i] = 0x72
-	}
-	if m.Field13 != nil {
-		i--
-		if *m.Field13 {
-			dAtA[i] = 1
-		} else {
-			dAtA[i] = 0
-		}
-		i--
-		dAtA[i] = 0x68
-	}
-	if m.Field12 != nil {
-		i -= 8
-		encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(*m.Field12))
-		i--
-		dAtA[i] = 0x61
-	}
-	if m.Field11 != nil {
-		i -= 8
-		encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(*m.Field11))
-		i--
-		dAtA[i] = 0x59
-	}
-	if m.Field10 != nil {
-		i -= 4
-		encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(*m.Field10))
-		i--
-		dAtA[i] = 0x55
-	}
-	if m.Field9 != nil {
-		i -= 4
-		encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(*m.Field9))
-		i--
-		dAtA[i] = 0x4d
-	}
-	if m.Field8 != nil {
-		i = encodeVarintFuzz(dAtA, i, uint64((uint64(*m.Field8)<<1)^uint64((*m.Field8>>63))))
-		i--
-		dAtA[i] = 0x40
-	}
-	if m.Field7 != nil {
-		i = encodeVarintFuzz(dAtA, i, uint64((uint32(*m.Field7)<<1)^uint32((*m.Field7>>31))))
-		i--
-		dAtA[i] = 0x38
-	}
-	if m.Field6 != nil {
-		i = encodeVarintFuzz(dAtA, i, uint64(*m.Field6))
-		i--
-		dAtA[i] = 0x30
-	}
-	if m.Field5 != nil {
-		i = encodeVarintFuzz(dAtA, i, uint64(*m.Field5))
-		i--
-		dAtA[i] = 0x28
-	}
-	if m.Field4 != nil {
-		i = encodeVarintFuzz(dAtA, i, uint64(*m.Field4))
-		i--
-		dAtA[i] = 0x20
-	}
-	if m.Field3 != nil {
-		i = encodeVarintFuzz(dAtA, i, uint64(*m.Field3))
-		i--
-		dAtA[i] = 0x18
-	}
-	if m.Field2 != nil {
-		i -= 4
-		encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(*m.Field2))))
-		i--
-		dAtA[i] = 0x15
-	}
-	if m.Field1 != nil {
-		i -= 8
-		encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(math.Float64bits(float64(*m.Field1))))
-		i--
-		dAtA[i] = 0x9
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *NinOptStruct) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *NinOptStruct) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *NinOptStruct) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Field15 != nil {
-		i -= len(m.Field15)
-		copy(dAtA[i:], m.Field15)
-		i = encodeVarintFuzz(dAtA, i, uint64(len(m.Field15)))
-		i--
-		dAtA[i] = 0x7a
-	}
-	if m.Field14 != nil {
-		i -= len(*m.Field14)
-		copy(dAtA[i:], *m.Field14)
-		i = encodeVarintFuzz(dAtA, i, uint64(len(*m.Field14)))
-		i--
-		dAtA[i] = 0x72
-	}
-	if m.Field13 != nil {
-		i--
-		if *m.Field13 {
-			dAtA[i] = 1
-		} else {
-			dAtA[i] = 0
-		}
-		i--
-		dAtA[i] = 0x68
-	}
-	if m.Field8 != nil {
-		{
-			size, err := m.Field8.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintFuzz(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0x42
-	}
-	if m.Field7 != nil {
-		i = encodeVarintFuzz(dAtA, i, uint64((uint32(*m.Field7)<<1)^uint32((*m.Field7>>31))))
-		i--
-		dAtA[i] = 0x38
-	}
-	if m.Field6 != nil {
-		i = encodeVarintFuzz(dAtA, i, uint64(*m.Field6))
-		i--
-		dAtA[i] = 0x30
-	}
-	if m.Field4 != nil {
-		{
-			size, err := m.Field4.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintFuzz(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0x22
-	}
-	if m.Field3 != nil {
-		{
-			size, err := m.Field3.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintFuzz(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0x1a
-	}
-	if m.Field2 != nil {
-		i -= 4
-		encoding_binary.LittleEndian.PutUint32(dAtA[i:], uint32(math.Float32bits(float32(*m.Field2))))
-		i--
-		dAtA[i] = 0x15
-	}
-	if m.Field1 != nil {
-		i -= 8
-		encoding_binary.LittleEndian.PutUint64(dAtA[i:], uint64(math.Float64bits(float64(*m.Field1))))
-		i--
-		dAtA[i] = 0x9
-	}
-	return len(dAtA) - i, nil
-}
-
-func encodeVarintFuzz(dAtA []byte, offset int, v uint64) int {
-	offset -= sovFuzz(v)
-	base := offset
-	for v >= 1<<7 {
-		dAtA[offset] = uint8(v&0x7f | 0x80)
-		v >>= 7
-		offset++
-	}
-	dAtA[offset] = uint8(v)
-	return base
-}
-func (m *Nil) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *NinRepPackedNative) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if len(m.Field1) > 0 {
-		n += 1 + sovFuzz(uint64(len(m.Field1)*8)) + len(m.Field1)*8
-	}
-	if len(m.Field2) > 0 {
-		n += 1 + sovFuzz(uint64(len(m.Field2)*4)) + len(m.Field2)*4
-	}
-	if len(m.Field3) > 0 {
-		l = 0
-		for _, e := range m.Field3 {
-			l += sovFuzz(uint64(e))
-		}
-		n += 1 + sovFuzz(uint64(l)) + l
-	}
-	if len(m.Field4) > 0 {
-		l = 0
-		for _, e := range m.Field4 {
-			l += sovFuzz(uint64(e))
-		}
-		n += 1 + sovFuzz(uint64(l)) + l
-	}
-	if len(m.Field5) > 0 {
-		l = 0
-		for _, e := range m.Field5 {
-			l += sovFuzz(uint64(e))
-		}
-		n += 1 + sovFuzz(uint64(l)) + l
-	}
-	if len(m.Field6) > 0 {
-		l = 0
-		for _, e := range m.Field6 {
-			l += sovFuzz(uint64(e))
-		}
-		n += 1 + sovFuzz(uint64(l)) + l
-	}
-	if len(m.Field7) > 0 {
-		l = 0
-		for _, e := range m.Field7 {
-			l += sozFuzz(uint64(e))
-		}
-		n += 1 + sovFuzz(uint64(l)) + l
-	}
-	if len(m.Field8) > 0 {
-		l = 0
-		for _, e := range m.Field8 {
-			l += sozFuzz(uint64(e))
-		}
-		n += 1 + sovFuzz(uint64(l)) + l
-	}
-	if len(m.Field9) > 0 {
-		n += 1 + sovFuzz(uint64(len(m.Field9)*4)) + len(m.Field9)*4
-	}
-	if len(m.Field10) > 0 {
-		n += 1 + sovFuzz(uint64(len(m.Field10)*4)) + len(m.Field10)*4
-	}
-	if len(m.Field11) > 0 {
-		n += 1 + sovFuzz(uint64(len(m.Field11)*8)) + len(m.Field11)*8
-	}
-	if len(m.Field12) > 0 {
-		n += 1 + sovFuzz(uint64(len(m.Field12)*8)) + len(m.Field12)*8
-	}
-	if len(m.Field13) > 0 {
-		n += 1 + sovFuzz(uint64(len(m.Field13))) + len(m.Field13)*1
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *NinOptNative) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Field1 != nil {
-		n += 9
-	}
-	if m.Field2 != nil {
-		n += 5
-	}
-	if m.Field3 != nil {
-		n += 1 + sovFuzz(uint64(*m.Field3))
-	}
-	if m.Field4 != nil {
-		n += 1 + sovFuzz(uint64(*m.Field4))
-	}
-	if m.Field5 != nil {
-		n += 1 + sovFuzz(uint64(*m.Field5))
-	}
-	if m.Field6 != nil {
-		n += 1 + sovFuzz(uint64(*m.Field6))
-	}
-	if m.Field7 != nil {
-		n += 1 + sozFuzz(uint64(*m.Field7))
-	}
-	if m.Field8 != nil {
-		n += 1 + sozFuzz(uint64(*m.Field8))
-	}
-	if m.Field9 != nil {
-		n += 5
-	}
-	if m.Field10 != nil {
-		n += 5
-	}
-	if m.Field11 != nil {
-		n += 9
-	}
-	if m.Field12 != nil {
-		n += 9
-	}
-	if m.Field13 != nil {
-		n += 2
-	}
-	if m.Field14 != nil {
-		l = len(*m.Field14)
-		n += 1 + l + sovFuzz(uint64(l))
-	}
-	if m.Field15 != nil {
-		l = len(m.Field15)
-		n += 1 + l + sovFuzz(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *NinOptStruct) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Field1 != nil {
-		n += 9
-	}
-	if m.Field2 != nil {
-		n += 5
-	}
-	if m.Field3 != nil {
-		l = m.Field3.Size()
-		n += 1 + l + sovFuzz(uint64(l))
-	}
-	if m.Field4 != nil {
-		l = m.Field4.Size()
-		n += 1 + l + sovFuzz(uint64(l))
-	}
-	if m.Field6 != nil {
-		n += 1 + sovFuzz(uint64(*m.Field6))
-	}
-	if m.Field7 != nil {
-		n += 1 + sozFuzz(uint64(*m.Field7))
-	}
-	if m.Field8 != nil {
-		l = m.Field8.Size()
-		n += 1 + l + sovFuzz(uint64(l))
-	}
-	if m.Field13 != nil {
-		n += 2
-	}
-	if m.Field14 != nil {
-		l = len(*m.Field14)
-		n += 1 + l + sovFuzz(uint64(l))
-	}
-	if m.Field15 != nil {
-		l = len(m.Field15)
-		n += 1 + l + sovFuzz(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func sovFuzz(x uint64) (n int) {
-	return (math_bits.Len64(x|1) + 6) / 7
-}
-func sozFuzz(x uint64) (n int) {
-	return sovFuzz(uint64((x << 1) ^ uint64((int64(x) >> 63))))
-}
-func (m *Nil) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowFuzz
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: Nil: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Nil: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		default:
-			iNdEx = preIndex
-			skippy, err := skipFuzz(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthFuzz
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *NinRepPackedNative) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowFuzz
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: NinRepPackedNative: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: NinRepPackedNative: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType == 1 {
-				var v uint64
-				if (iNdEx + 8) > l {
-					return io.ErrUnexpectedEOF
-				}
-				v = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
-				iNdEx += 8
-				v2 := float64(math.Float64frombits(v))
-				m.Field1 = append(m.Field1, v2)
-			} else if wireType == 2 {
-				var packedLen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					packedLen |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if packedLen < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				postIndex := iNdEx + packedLen
-				if postIndex < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				if postIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				var elementCount int
-				elementCount = packedLen / 8
-				if elementCount != 0 && len(m.Field1) == 0 {
-					m.Field1 = make([]float64, 0, elementCount)
-				}
-				for iNdEx < postIndex {
-					var v uint64
-					if (iNdEx + 8) > l {
-						return io.ErrUnexpectedEOF
-					}
-					v = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
-					iNdEx += 8
-					v2 := float64(math.Float64frombits(v))
-					m.Field1 = append(m.Field1, v2)
-				}
-			} else {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field1", wireType)
-			}
-		case 2:
-			if wireType == 5 {
-				var v uint32
-				if (iNdEx + 4) > l {
-					return io.ErrUnexpectedEOF
-				}
-				v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
-				iNdEx += 4
-				v2 := float32(math.Float32frombits(v))
-				m.Field2 = append(m.Field2, v2)
-			} else if wireType == 2 {
-				var packedLen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					packedLen |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if packedLen < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				postIndex := iNdEx + packedLen
-				if postIndex < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				if postIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				var elementCount int
-				elementCount = packedLen / 4
-				if elementCount != 0 && len(m.Field2) == 0 {
-					m.Field2 = make([]float32, 0, elementCount)
-				}
-				for iNdEx < postIndex {
-					var v uint32
-					if (iNdEx + 4) > l {
-						return io.ErrUnexpectedEOF
-					}
-					v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
-					iNdEx += 4
-					v2 := float32(math.Float32frombits(v))
-					m.Field2 = append(m.Field2, v2)
-				}
-			} else {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field2", wireType)
-			}
-		case 3:
-			if wireType == 0 {
-				var v int32
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					v |= int32(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				m.Field3 = append(m.Field3, v)
-			} else if wireType == 2 {
-				var packedLen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					packedLen |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if packedLen < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				postIndex := iNdEx + packedLen
-				if postIndex < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				if postIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				var elementCount int
-				var count int
-				for _, integer := range dAtA[iNdEx:postIndex] {
-					if integer < 128 {
-						count++
-					}
-				}
-				elementCount = count
-				if elementCount != 0 && len(m.Field3) == 0 {
-					m.Field3 = make([]int32, 0, elementCount)
-				}
-				for iNdEx < postIndex {
-					var v int32
-					for shift := uint(0); ; shift += 7 {
-						if shift >= 64 {
-							return ErrIntOverflowFuzz
-						}
-						if iNdEx >= l {
-							return io.ErrUnexpectedEOF
-						}
-						b := dAtA[iNdEx]
-						iNdEx++
-						v |= int32(b&0x7F) << shift
-						if b < 0x80 {
-							break
-						}
-					}
-					m.Field3 = append(m.Field3, v)
-				}
-			} else {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field3", wireType)
-			}
-		case 4:
-			if wireType == 0 {
-				var v int64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					v |= int64(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				m.Field4 = append(m.Field4, v)
-			} else if wireType == 2 {
-				var packedLen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					packedLen |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if packedLen < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				postIndex := iNdEx + packedLen
-				if postIndex < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				if postIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				var elementCount int
-				var count int
-				for _, integer := range dAtA[iNdEx:postIndex] {
-					if integer < 128 {
-						count++
-					}
-				}
-				elementCount = count
-				if elementCount != 0 && len(m.Field4) == 0 {
-					m.Field4 = make([]int64, 0, elementCount)
-				}
-				for iNdEx < postIndex {
-					var v int64
-					for shift := uint(0); ; shift += 7 {
-						if shift >= 64 {
-							return ErrIntOverflowFuzz
-						}
-						if iNdEx >= l {
-							return io.ErrUnexpectedEOF
-						}
-						b := dAtA[iNdEx]
-						iNdEx++
-						v |= int64(b&0x7F) << shift
-						if b < 0x80 {
-							break
-						}
-					}
-					m.Field4 = append(m.Field4, v)
-				}
-			} else {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field4", wireType)
-			}
-		case 5:
-			if wireType == 0 {
-				var v uint32
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					v |= uint32(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				m.Field5 = append(m.Field5, v)
-			} else if wireType == 2 {
-				var packedLen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					packedLen |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if packedLen < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				postIndex := iNdEx + packedLen
-				if postIndex < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				if postIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				var elementCount int
-				var count int
-				for _, integer := range dAtA[iNdEx:postIndex] {
-					if integer < 128 {
-						count++
-					}
-				}
-				elementCount = count
-				if elementCount != 0 && len(m.Field5) == 0 {
-					m.Field5 = make([]uint32, 0, elementCount)
-				}
-				for iNdEx < postIndex {
-					var v uint32
-					for shift := uint(0); ; shift += 7 {
-						if shift >= 64 {
-							return ErrIntOverflowFuzz
-						}
-						if iNdEx >= l {
-							return io.ErrUnexpectedEOF
-						}
-						b := dAtA[iNdEx]
-						iNdEx++
-						v |= uint32(b&0x7F) << shift
-						if b < 0x80 {
-							break
-						}
-					}
-					m.Field5 = append(m.Field5, v)
-				}
-			} else {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field5", wireType)
-			}
-		case 6:
-			if wireType == 0 {
-				var v uint64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					v |= uint64(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				m.Field6 = append(m.Field6, v)
-			} else if wireType == 2 {
-				var packedLen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					packedLen |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if packedLen < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				postIndex := iNdEx + packedLen
-				if postIndex < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				if postIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				var elementCount int
-				var count int
-				for _, integer := range dAtA[iNdEx:postIndex] {
-					if integer < 128 {
-						count++
-					}
-				}
-				elementCount = count
-				if elementCount != 0 && len(m.Field6) == 0 {
-					m.Field6 = make([]uint64, 0, elementCount)
-				}
-				for iNdEx < postIndex {
-					var v uint64
-					for shift := uint(0); ; shift += 7 {
-						if shift >= 64 {
-							return ErrIntOverflowFuzz
-						}
-						if iNdEx >= l {
-							return io.ErrUnexpectedEOF
-						}
-						b := dAtA[iNdEx]
-						iNdEx++
-						v |= uint64(b&0x7F) << shift
-						if b < 0x80 {
-							break
-						}
-					}
-					m.Field6 = append(m.Field6, v)
-				}
-			} else {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field6", wireType)
-			}
-		case 7:
-			if wireType == 0 {
-				var v int32
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					v |= int32(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				v = int32((uint32(v) >> 1) ^ uint32(((v&1)<<31)>>31))
-				m.Field7 = append(m.Field7, v)
-			} else if wireType == 2 {
-				var packedLen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					packedLen |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if packedLen < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				postIndex := iNdEx + packedLen
-				if postIndex < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				if postIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				var elementCount int
-				var count int
-				for _, integer := range dAtA[iNdEx:postIndex] {
-					if integer < 128 {
-						count++
-					}
-				}
-				elementCount = count
-				if elementCount != 0 && len(m.Field7) == 0 {
-					m.Field7 = make([]int32, 0, elementCount)
-				}
-				for iNdEx < postIndex {
-					var v int32
-					for shift := uint(0); ; shift += 7 {
-						if shift >= 64 {
-							return ErrIntOverflowFuzz
-						}
-						if iNdEx >= l {
-							return io.ErrUnexpectedEOF
-						}
-						b := dAtA[iNdEx]
-						iNdEx++
-						v |= int32(b&0x7F) << shift
-						if b < 0x80 {
-							break
-						}
-					}
-					v = int32((uint32(v) >> 1) ^ uint32(((v&1)<<31)>>31))
-					m.Field7 = append(m.Field7, v)
-				}
-			} else {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field7", wireType)
-			}
-		case 8:
-			if wireType == 0 {
-				var v uint64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					v |= uint64(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				v = (v >> 1) ^ uint64((int64(v&1)<<63)>>63)
-				m.Field8 = append(m.Field8, int64(v))
-			} else if wireType == 2 {
-				var packedLen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					packedLen |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if packedLen < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				postIndex := iNdEx + packedLen
-				if postIndex < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				if postIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				var elementCount int
-				var count int
-				for _, integer := range dAtA[iNdEx:postIndex] {
-					if integer < 128 {
-						count++
-					}
-				}
-				elementCount = count
-				if elementCount != 0 && len(m.Field8) == 0 {
-					m.Field8 = make([]int64, 0, elementCount)
-				}
-				for iNdEx < postIndex {
-					var v uint64
-					for shift := uint(0); ; shift += 7 {
-						if shift >= 64 {
-							return ErrIntOverflowFuzz
-						}
-						if iNdEx >= l {
-							return io.ErrUnexpectedEOF
-						}
-						b := dAtA[iNdEx]
-						iNdEx++
-						v |= uint64(b&0x7F) << shift
-						if b < 0x80 {
-							break
-						}
-					}
-					v = (v >> 1) ^ uint64((int64(v&1)<<63)>>63)
-					m.Field8 = append(m.Field8, int64(v))
-				}
-			} else {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field8", wireType)
-			}
-		case 9:
-			if wireType == 5 {
-				var v uint32
-				if (iNdEx + 4) > l {
-					return io.ErrUnexpectedEOF
-				}
-				v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
-				iNdEx += 4
-				m.Field9 = append(m.Field9, v)
-			} else if wireType == 2 {
-				var packedLen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					packedLen |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if packedLen < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				postIndex := iNdEx + packedLen
-				if postIndex < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				if postIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				var elementCount int
-				elementCount = packedLen / 4
-				if elementCount != 0 && len(m.Field9) == 0 {
-					m.Field9 = make([]uint32, 0, elementCount)
-				}
-				for iNdEx < postIndex {
-					var v uint32
-					if (iNdEx + 4) > l {
-						return io.ErrUnexpectedEOF
-					}
-					v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
-					iNdEx += 4
-					m.Field9 = append(m.Field9, v)
-				}
-			} else {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field9", wireType)
-			}
-		case 10:
-			if wireType == 5 {
-				var v int32
-				if (iNdEx + 4) > l {
-					return io.ErrUnexpectedEOF
-				}
-				v = int32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
-				iNdEx += 4
-				m.Field10 = append(m.Field10, v)
-			} else if wireType == 2 {
-				var packedLen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					packedLen |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if packedLen < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				postIndex := iNdEx + packedLen
-				if postIndex < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				if postIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				var elementCount int
-				elementCount = packedLen / 4
-				if elementCount != 0 && len(m.Field10) == 0 {
-					m.Field10 = make([]int32, 0, elementCount)
-				}
-				for iNdEx < postIndex {
-					var v int32
-					if (iNdEx + 4) > l {
-						return io.ErrUnexpectedEOF
-					}
-					v = int32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
-					iNdEx += 4
-					m.Field10 = append(m.Field10, v)
-				}
-			} else {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field10", wireType)
-			}
-		case 11:
-			if wireType == 1 {
-				var v uint64
-				if (iNdEx + 8) > l {
-					return io.ErrUnexpectedEOF
-				}
-				v = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
-				iNdEx += 8
-				m.Field11 = append(m.Field11, v)
-			} else if wireType == 2 {
-				var packedLen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					packedLen |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if packedLen < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				postIndex := iNdEx + packedLen
-				if postIndex < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				if postIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				var elementCount int
-				elementCount = packedLen / 8
-				if elementCount != 0 && len(m.Field11) == 0 {
-					m.Field11 = make([]uint64, 0, elementCount)
-				}
-				for iNdEx < postIndex {
-					var v uint64
-					if (iNdEx + 8) > l {
-						return io.ErrUnexpectedEOF
-					}
-					v = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
-					iNdEx += 8
-					m.Field11 = append(m.Field11, v)
-				}
-			} else {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field11", wireType)
-			}
-		case 12:
-			if wireType == 1 {
-				var v int64
-				if (iNdEx + 8) > l {
-					return io.ErrUnexpectedEOF
-				}
-				v = int64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
-				iNdEx += 8
-				m.Field12 = append(m.Field12, v)
-			} else if wireType == 2 {
-				var packedLen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					packedLen |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if packedLen < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				postIndex := iNdEx + packedLen
-				if postIndex < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				if postIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				var elementCount int
-				elementCount = packedLen / 8
-				if elementCount != 0 && len(m.Field12) == 0 {
-					m.Field12 = make([]int64, 0, elementCount)
-				}
-				for iNdEx < postIndex {
-					var v int64
-					if (iNdEx + 8) > l {
-						return io.ErrUnexpectedEOF
-					}
-					v = int64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
-					iNdEx += 8
-					m.Field12 = append(m.Field12, v)
-				}
-			} else {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field12", wireType)
-			}
-		case 13:
-			if wireType == 0 {
-				var v int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					v |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				m.Field13 = append(m.Field13, bool(v != 0))
-			} else if wireType == 2 {
-				var packedLen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowFuzz
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					packedLen |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if packedLen < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				postIndex := iNdEx + packedLen
-				if postIndex < 0 {
-					return ErrInvalidLengthFuzz
-				}
-				if postIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				var elementCount int
-				elementCount = packedLen
-				if elementCount != 0 && len(m.Field13) == 0 {
-					m.Field13 = make([]bool, 0, elementCount)
-				}
-				for iNdEx < postIndex {
-					var v int
-					for shift := uint(0); ; shift += 7 {
-						if shift >= 64 {
-							return ErrIntOverflowFuzz
-						}
-						if iNdEx >= l {
-							return io.ErrUnexpectedEOF
-						}
-						b := dAtA[iNdEx]
-						iNdEx++
-						v |= int(b&0x7F) << shift
-						if b < 0x80 {
-							break
-						}
-					}
-					m.Field13 = append(m.Field13, bool(v != 0))
-				}
-			} else {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field13", wireType)
-			}
-		default:
-			iNdEx = preIndex
-			skippy, err := skipFuzz(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthFuzz
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *NinOptNative) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowFuzz
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: NinOptNative: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: NinOptNative: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 1 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field1", wireType)
-			}
-			var v uint64
-			if (iNdEx + 8) > l {
-				return io.ErrUnexpectedEOF
-			}
-			v = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
-			iNdEx += 8
-			v2 := float64(math.Float64frombits(v))
-			m.Field1 = &v2
-		case 2:
-			if wireType != 5 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field2", wireType)
-			}
-			var v uint32
-			if (iNdEx + 4) > l {
-				return io.ErrUnexpectedEOF
-			}
-			v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
-			iNdEx += 4
-			v2 := float32(math.Float32frombits(v))
-			m.Field2 = &v2
-		case 3:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field3", wireType)
-			}
-			var v int32
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFuzz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				v |= int32(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			m.Field3 = &v
-		case 4:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field4", wireType)
-			}
-			var v int64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFuzz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				v |= int64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			m.Field4 = &v
-		case 5:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field5", wireType)
-			}
-			var v uint32
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFuzz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				v |= uint32(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			m.Field5 = &v
-		case 6:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field6", wireType)
-			}
-			var v uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFuzz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				v |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			m.Field6 = &v
-		case 7:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field7", wireType)
-			}
-			var v int32
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFuzz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				v |= int32(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			v = int32((uint32(v) >> 1) ^ uint32(((v&1)<<31)>>31))
-			m.Field7 = &v
-		case 8:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field8", wireType)
-			}
-			var v uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFuzz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				v |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			v = (v >> 1) ^ uint64((int64(v&1)<<63)>>63)
-			v2 := int64(v)
-			m.Field8 = &v2
-		case 9:
-			if wireType != 5 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field9", wireType)
-			}
-			var v uint32
-			if (iNdEx + 4) > l {
-				return io.ErrUnexpectedEOF
-			}
-			v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
-			iNdEx += 4
-			m.Field9 = &v
-		case 10:
-			if wireType != 5 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field10", wireType)
-			}
-			var v int32
-			if (iNdEx + 4) > l {
-				return io.ErrUnexpectedEOF
-			}
-			v = int32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
-			iNdEx += 4
-			m.Field10 = &v
-		case 11:
-			if wireType != 1 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field11", wireType)
-			}
-			var v uint64
-			if (iNdEx + 8) > l {
-				return io.ErrUnexpectedEOF
-			}
-			v = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
-			iNdEx += 8
-			m.Field11 = &v
-		case 12:
-			if wireType != 1 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field12", wireType)
-			}
-			var v int64
-			if (iNdEx + 8) > l {
-				return io.ErrUnexpectedEOF
-			}
-			v = int64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
-			iNdEx += 8
-			m.Field12 = &v
-		case 13:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field13", wireType)
-			}
-			var v int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFuzz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				v |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			b := bool(v != 0)
-			m.Field13 = &b
-		case 14:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field14", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFuzz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthFuzz
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthFuzz
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			s := string(dAtA[iNdEx:postIndex])
-			m.Field14 = &s
-			iNdEx = postIndex
-		case 15:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field15", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFuzz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthFuzz
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthFuzz
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Field15 = append(m.Field15[:0], dAtA[iNdEx:postIndex]...)
-			if m.Field15 == nil {
-				m.Field15 = []byte{}
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipFuzz(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthFuzz
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *NinOptStruct) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowFuzz
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: NinOptStruct: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: NinOptStruct: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 1 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field1", wireType)
-			}
-			var v uint64
-			if (iNdEx + 8) > l {
-				return io.ErrUnexpectedEOF
-			}
-			v = uint64(encoding_binary.LittleEndian.Uint64(dAtA[iNdEx:]))
-			iNdEx += 8
-			v2 := float64(math.Float64frombits(v))
-			m.Field1 = &v2
-		case 2:
-			if wireType != 5 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field2", wireType)
-			}
-			var v uint32
-			if (iNdEx + 4) > l {
-				return io.ErrUnexpectedEOF
-			}
-			v = uint32(encoding_binary.LittleEndian.Uint32(dAtA[iNdEx:]))
-			iNdEx += 4
-			v2 := float32(math.Float32frombits(v))
-			m.Field2 = &v2
-		case 3:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field3", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFuzz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthFuzz
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthFuzz
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Field3 == nil {
-				m.Field3 = &NinOptNative{}
-			}
-			if err := m.Field3.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		case 4:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field4", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFuzz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthFuzz
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthFuzz
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Field4 == nil {
-				m.Field4 = &NinOptNative{}
-			}
-			if err := m.Field4.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		case 6:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field6", wireType)
-			}
-			var v uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFuzz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				v |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			m.Field6 = &v
-		case 7:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field7", wireType)
-			}
-			var v int32
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFuzz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				v |= int32(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			v = int32((uint32(v) >> 1) ^ uint32(((v&1)<<31)>>31))
-			m.Field7 = &v
-		case 8:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field8", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFuzz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthFuzz
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthFuzz
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Field8 == nil {
-				m.Field8 = &NinOptNative{}
-			}
-			if err := m.Field8.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		case 13:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field13", wireType)
-			}
-			var v int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFuzz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				v |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			b := bool(v != 0)
-			m.Field13 = &b
-		case 14:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field14", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFuzz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthFuzz
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthFuzz
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			s := string(dAtA[iNdEx:postIndex])
-			m.Field14 = &s
-			iNdEx = postIndex
-		case 15:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Field15", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowFuzz
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthFuzz
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthFuzz
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Field15 = append(m.Field15[:0], dAtA[iNdEx:postIndex]...)
-			if m.Field15 == nil {
-				m.Field15 = []byte{}
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipFuzz(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthFuzz
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func skipFuzz(dAtA []byte) (n int, err error) {
-	l := len(dAtA)
-	iNdEx := 0
-	depth := 0
-	for iNdEx < l {
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return 0, ErrIntOverflowFuzz
-			}
-			if iNdEx >= l {
-				return 0, io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= (uint64(b) & 0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		wireType := int(wire & 0x7)
-		switch wireType {
-		case 0:
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return 0, ErrIntOverflowFuzz
-				}
-				if iNdEx >= l {
-					return 0, io.ErrUnexpectedEOF
-				}
-				iNdEx++
-				if dAtA[iNdEx-1] < 0x80 {
-					break
-				}
-			}
-		case 1:
-			iNdEx += 8
-		case 2:
-			var length int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return 0, ErrIntOverflowFuzz
-				}
-				if iNdEx >= l {
-					return 0, io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				length |= (int(b) & 0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if length < 0 {
-				return 0, ErrInvalidLengthFuzz
-			}
-			iNdEx += length
-		case 3:
-			depth++
-		case 4:
-			if depth == 0 {
-				return 0, ErrUnexpectedEndOfGroupFuzz
-			}
-			depth--
-		case 5:
-			iNdEx += 4
-		default:
-			return 0, fmt.Errorf("proto: illegal wireType %d", wireType)
-		}
-		if iNdEx < 0 {
-			return 0, ErrInvalidLengthFuzz
-		}
-		if depth == 0 {
-			return iNdEx, nil
-		}
-	}
-	return 0, io.ErrUnexpectedEOF
-}
-
-var (
-	ErrInvalidLengthFuzz        = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowFuzz          = fmt.Errorf("proto: integer overflow")
-	ErrUnexpectedEndOfGroupFuzz = fmt.Errorf("proto: unexpected end of group")
-)

@@ -6,7 +6,7 @@ package proto3extension
 import (
 	fmt "fmt"
 	proto "github.com/coderyw/protobuf/proto"
-	descriptor "github.com/coderyw/protobuf/protoc-gen-gogo/descriptor"
+	descriptorpb "google.golang.org/protobuf/types/descriptorpb"
 	math "math"
 )
 
@@ -22,7 +22,7 @@ var _ = math.Inf
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 var E_Primary = &proto.ExtensionDesc{
-	ExtendedType:  (*descriptor.FieldOptions)(nil),
+	ExtendedType:  (*descriptorpb.FieldOptions)(nil),
 	ExtensionType: (*bool)(nil),
 	Field:         51234,
 	Name:          "proto3extension.primary",
@@ -31,7 +31,7 @@ var E_Primary = &proto.ExtensionDesc{
 }
 
 var E_Index = &proto.ExtensionDesc{
-	ExtendedType:  (*descriptor.FieldOptions)(nil),
+	ExtendedType:  (*descriptorpb.FieldOptions)(nil),
 	ExtensionType: (*bool)(nil),
 	Field:         51235,
 	Name:          "proto3extension.index",
