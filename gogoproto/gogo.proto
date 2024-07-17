@@ -97,6 +97,21 @@ extend google.protobuf.FileOptions {
   optional bool json_un_all = 63036;
   // 所有field都添加form tag，tag值从json
   optional bool form_all = 63037;
+  // 兼容go_out，会取消生成某些东西
+  // todo gogo里生成go_out多的东西
+  optional bool compatible_go_out = 63038;
+}
+
+extend google.protobuf.MethodOptions {
+  // 路由地址 serverName path
+  optional Router router_path = 66001;
+}
+
+message Router{
+  // 对应rcp的server name
+  optional string server = 2;
+  // http路由地址
+  optional string router_path = 1;
 }
 
 extend google.protobuf.MessageOptions {

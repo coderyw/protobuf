@@ -28,7 +28,9 @@
 
 package gogoproto
 
-import google_protobuf "github.com/coderyw/protobuf/protoc-gen-gogo/descriptor"
+import (
+	google_protobuf "github.com/coderyw/protobuf/protoc-gen-gogo/descriptor"
+)
 import proto "github.com/coderyw/protobuf/proto"
 
 func IsEmbed(field *google_protobuf.FieldDescriptorProto) bool {
@@ -473,4 +475,22 @@ func GetKeyReflect(message *google_protobuf.DescriptorProto) *string {
 		}
 	}
 	return nil
+}
+
+func GetRouterPath(message *google_protobuf.MethodDescriptorProto) *Router {
+	if message == nil {
+		return nil
+	}
+	if message.Options != nil {
+		v, err := proto.GetExtension(message.Options, E_RouterPath)
+		if err == nil && v.(*Router) != nil {
+			return v.(*Router)
+		}
+	}
+	return nil
+
+}
+
+func HasMakeStruct(file *google_protobuf.FileDescriptorProto) bool {
+	return proto.GetBoolExtension(file.Options, E_CompatibleGoOut, false)
 }

@@ -28,7 +28,7 @@
 
 regenerate:
 	#go install github.com/coderyw/protobuf/protoc-gen-gogo
-	protoc --gogo_out=Mgoogle/protobuf/descriptor.proto=github.com/coderyw/protobuf/protoc-gen-gogo/descriptor:./ --proto_path=../../../../:../protobuf/:. *.proto
+	protoc  --gogo_out=Mgoogle/protobuf/descriptor.proto=github.com/coderyw/protobuf/protoc-gen-gogo/descriptor:./ --proto_path=../../../../:../protobuf/:. *.proto
 
 generate:
 	protoc --java_out=./ --proto_path=../../../../:../protobuf/:. *.proto

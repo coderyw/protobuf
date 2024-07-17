@@ -36,6 +36,7 @@ package grpc
 
 import (
 	"fmt"
+	"github.com/coderyw/protobuf/gogoproto"
 	"strconv"
 	"strings"
 
@@ -124,6 +125,11 @@ func (g *grpc) Generate(file *generator.FileDescriptor) {
 	for i, service := range file.FileDescriptorProto.Service {
 		g.generateService(file, service, i)
 	}
+	//
+	for i, service := range file.FileDescriptorProto.Service {
+		g.generateRouterPathFromService(file, service, i)
+	}
+
 }
 
 // GenerateImports generates the import declaration for this file.
@@ -139,6 +145,28 @@ func unexport(s string) string { return strings.ToLower(s[:1]) + s[1:] }
 // deprecationComment is the standard comment added to deprecated
 // messages, fields, enums, and enum values.
 var deprecationComment = "// Deprecated: Do not use."
+
+func (g *grpc) generateRouterPathFromService(file *generator.FileDescriptor, service *pb.ServiceDescriptorProto, index int) {
+
+	origServName := service.GetName()
+	fullServName := origServName
+	if pkg := file.GetPackage(); pkg != "" {
+		fullServName = pkg + "." + fullServName
+	}
+	servName := generator.CamelCase(origServName)
+
+	g.P()
+	g.P("// 路由配置")
+	g.P("func init(){")
+	// Client method implementations.
+	for _, method := range service.Method {
+
+		g.generateRoutePath(servName, fullServName, method)
+	}
+	g.P("}")
+
+	g.P()
+}
 
 // generateService generates all the code for the named service.
 func (g *grpc) generateService(file *generator.FileDescriptor, service *pb.ServiceDescriptorProto, index int) {
@@ -313,6 +341,8 @@ func (g *grpc) generateClientSignature(servName string, method *pb.MethodDescrip
 		methName += "_"
 	}
 	reqArg := ", in *" + g.typeName(method.GetInputType())
+	g.P("// reqArg ", reqArg)
+
 	if method.GetClientStreaming() {
 		reqArg = ""
 	}
@@ -320,7 +350,36 @@ func (g *grpc) generateClientSignature(servName string, method *pb.MethodDescrip
 	if method.GetServerStreaming() || method.GetClientStreaming() {
 		respName = servName + "_" + generator.CamelCase(origMethName) + "Client"
 	}
+	g.P("// respName ", respName)
 	return fmt.Sprintf("%s(ctx %s.Context%s, opts ...%s.CallOption) (%s, error)", methName, contextPkg, reqArg, grpcPkg, respName)
+}
+
+// 生成router path
+func (g *grpc) generateRoutePath(servName, fullServName string, method *pb.MethodDescriptorProto) {
+
+	if val := gogoproto.GetRouterPath(method); val != nil && val.Server != nil && val.RouterPath != nil {
+		g.gen.AddImport("github.com/coderyw/protobuf/keyreflect/route")
+		g.gen.AddImport("route")
+		sname := fmt.Sprintf("/%s/%s", fullServName, method.GetName())
+		origMethName := method.GetName()
+		methName := generator.CamelCase(origMethName)
+		if reservedClientName[methName] {
+			methName += "_"
+		}
+		reqArg := g.typeName(method.GetInputType())
+		g.P("// reqArg ", reqArg)
+
+		if method.GetClientStreaming() {
+			reqArg = ""
+		}
+		respName := g.typeName(method.GetOutputType())
+		if method.GetServerStreaming() || method.GetClientStreaming() {
+			respName = servName + "_" + generator.CamelCase(origMethName) + "Client"
+		}
+		g.P("// respName ", respName)
+
+		g.P(`route.Register("`, *val.Server, `","`, sname, `","`, *val.RouterPath, `",`, "new(", reqArg, "),", "new(", respName, "))")
+	}
 }
 
 func (g *grpc) generateClientMethod(servName, fullServName, serviceDescVar string, method *pb.MethodDescriptorProto, descExpr string) {
