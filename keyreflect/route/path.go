@@ -56,9 +56,9 @@ func Register(serverName, endpoint, path string, req interface{}, resp interface
 		}
 	}
 	if resp != nil {
-		respType = reflect.TypeOf(respType)
+		respType = reflect.TypeOf(resp)
 		if respType.Kind() == reflect.Ptr {
-			respType = reqType.Elem()
+			respType = respType.Elem()
 		}
 		if val, ok := cache[respType.String()]; ok {
 			respType = val

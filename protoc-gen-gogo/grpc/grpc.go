@@ -359,7 +359,6 @@ func (g *grpc) generateRoutePath(servName, fullServName string, method *pb.Metho
 
 	if val := gogoproto.GetRouterPath(method); val != nil && val.Server != nil && val.RouterPath != nil {
 		g.gen.AddImport("github.com/coderyw/protobuf/keyreflect/route")
-		g.gen.AddImport("route")
 		sname := fmt.Sprintf("/%s/%s", fullServName, method.GetName())
 		origMethName := method.GetName()
 		methName := generator.CamelCase(origMethName)
