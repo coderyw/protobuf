@@ -377,7 +377,13 @@ func (g *grpc) generateRoutePath(servName, fullServName string, method *pb.Metho
 		}
 		g.P("// respName ", respName)
 
-		g.P(`route.Register("`, *val.Server, `","`, sname, `","`, *val.RouterPath, `",`, "new(", reqArg, "),", "new(", respName, "))")
+		var s string = fmt.Sprintf("[]string{")
+		for _, v := range val.Plugins {
+			s += `"` + v + `",`
+		}
+		s += "}"
+
+		g.P(`route.Register("`, *val.Server, `","`, sname, `","`, *val.RouterPath, `",`, s, "new(", reqArg, "),", "new(", respName, "))")
 	}
 }
 

@@ -112,6 +112,8 @@ message Router{
   optional string server = 2;
   // http路由地址
   optional string router_path = 1;
+  //插件
+  repeated string plugins = 3;
 }
 
 extend google.protobuf.MessageOptions {
