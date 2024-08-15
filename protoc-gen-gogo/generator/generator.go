@@ -1608,7 +1608,10 @@ func (g *Generator) generateEnum(enum *EnumDescriptor) {
 	}
 	if gogoproto.EnabledGoEnumError(enum.file.FileDescriptorProto, enum.EnumDescriptorProto) {
 		ce := fmt.Sprintf("%vError", ccTypeName)
-		g.customImports = append(g.customImports, "errors")
+		//g.customImports = append(g.customImports, "github.com/pkg/errors")
+		g.packageNames["github.com/pkg/errors"] = "errors"
+		g.addedImports["github.com/pkg/errors"] = true
+		g.Pkg["github.com/pkg/errors"] = "errors"
 		g.P("type ", ce, " struct {")
 		g.In()
 		g.P("code ", ccTypeName)
@@ -1671,7 +1674,7 @@ func (g *Generator) generateEnum(enum *EnumDescriptor) {
 		g.P("if len(errs)==0 {")
 		g.P("err = errors.New(c.StringAlias())")
 		g.P("}else{")
-		g.P("err = errors.Join(errs...)")
+		g.P("err = errors.WithStack(errs[0])")
 		g.P("}")
 		g.P("return &", ce, "{")
 		g.P("code: c,")
@@ -1686,7 +1689,7 @@ func (g *Generator) generateEnum(enum *EnumDescriptor) {
 		g.P("if len(errs)==0 {")
 		g.P("err = errors.New(c.StringAlias())")
 		g.P("}else{")
-		g.P("err = errors.Join(errs...)")
+		g.P("err = errors.WithStack(errs[0])")
 		g.P("}")
 		g.P("log.Error(c.StringAlias(), err)")
 		g.P("return &", ce, "{")
@@ -1702,7 +1705,7 @@ func (g *Generator) generateEnum(enum *EnumDescriptor) {
 		g.P("if err == nil {")
 		g.P("return nil")
 		g.P("}")
-		g.P("log.Error(c.StringAlias(), err)")
+		g.P("err = errors.WithStack(err)")
 		g.P("return &", ce, "{")
 		g.P("code: c,")
 		g.P("err:  err,")
