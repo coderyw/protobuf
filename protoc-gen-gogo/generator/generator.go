@@ -1622,12 +1622,13 @@ func (g *Generator) generateEnum(enum *EnumDescriptor) {
 		g.P("func(e ", ce, ") Error()string{")
 		g.In()
 		g.P("if e.err != nil {")
-		g.P("return e.err.Error()")
+		g.P("return fmt.Sprintf(\"%v:%v\", e.code.StringAlias(), e.err.Error())")
 		g.P("}")
 		g.P("return e.code.StringAlias()")
 		g.Out()
 		g.P("}")
 
+		g.P("// UnwrapCode Analyze the code and error")
 		g.P("func(e ", ce, ") UnwrapCode()(", ccTypeName, ", error){")
 		g.In()
 		g.P("err:=e.err")
@@ -1638,6 +1639,7 @@ func (g *Generator) generateEnum(enum *EnumDescriptor) {
 		g.Out()
 		g.P("}")
 
+		g.P("// Unwrap Resolve the error")
 		g.P("func(e ", ce, ") Unwrap()error{")
 		g.In()
 		g.P("return e.err")
@@ -1668,6 +1670,8 @@ func (g *Generator) generateEnum(enum *EnumDescriptor) {
 		g.ImportMap["github.com/coderyw/protobuf/log"] = "log"
 		g.addedImports["github.com/coderyw/protobuf/log"] = true
 
+		g.P()
+		g.P("// New Create an error with stack through optional err")
 		g.P("func(c ", ccTypeName, ") New(errs ...error) error{")
 		g.In()
 		g.P("var err error")
@@ -1683,6 +1687,25 @@ func (g *Generator) generateEnum(enum *EnumDescriptor) {
 		g.Out()
 		g.P("}")
 
+		g.P()
+		g.P("// NewMsg Create an error without stack through optional err")
+		g.P("func(c ", ccTypeName, ") NewMsg(errs ...error) error{")
+		g.In()
+		g.P("var err error")
+		g.P("if len(errs)==0 {")
+		g.P("err = errors.Errorf(c.StringAlias())")
+		g.P("}else{")
+		g.P("err = errs[0]")
+		g.P("}")
+		g.P("return &", ce, "{")
+		g.P("code: c,")
+		g.P("err:  err,")
+		g.P("}")
+		g.Out()
+		g.P("}")
+
+		g.P()
+		g.P("// NewWithLog Create an error with a stack using the optional err and print the err")
 		g.P("func(c ", ccTypeName, ") NewWithLog(errs ...error) error{")
 		g.In()
 		g.P("var err error")
@@ -1699,7 +1722,8 @@ func (g *Generator) generateEnum(enum *EnumDescriptor) {
 		g.Out()
 		g.P("}")
 
-		g.P("// With error,if error is not nil;or will return nil")
+		g.P()
+		g.P("// With Create an error with a stack using err")
 		g.P("func(c ", ccTypeName, ") With(err error) error{")
 		g.In()
 		g.P("if err == nil {")
