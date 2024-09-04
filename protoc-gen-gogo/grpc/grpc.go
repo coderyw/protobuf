@@ -357,7 +357,7 @@ func (g *grpc) generateClientSignature(servName string, method *pb.MethodDescrip
 // 生成router path
 func (g *grpc) generateRoutePath(servName, fullServName string, method *pb.MethodDescriptorProto) {
 
-	if val := gogoproto.GetRouterPath(method); val != nil && val.Server != nil && val.RouterPath != nil {
+	if val := gogoproto.GetRouterPath(method); val != nil && val.Server != nil && val.RouterPath != nil && val.Method != nil {
 		g.gen.AddImport("github.com/coderyw/protobuf/keyreflect/route")
 		sname := fmt.Sprintf("/%s/%s", fullServName, method.GetName())
 		origMethName := method.GetName()
@@ -383,7 +383,7 @@ func (g *grpc) generateRoutePath(servName, fullServName string, method *pb.Metho
 		}
 		s += "}"
 
-		g.P(`route.Register("`, *val.Server, `","`, sname, `","`, *val.RouterPath, `",`, s, ",new(", reqArg, "),", "new(", respName, "))")
+		g.P(`route.Register("`, *val.Server, `","`, sname, `","`, *val.RouterPath, `","`, *val.Method, `",`, s, ",new(", reqArg, "),", "new(", respName, "))")
 	}
 }
 
