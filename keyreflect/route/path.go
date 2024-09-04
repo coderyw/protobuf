@@ -26,6 +26,8 @@ type Router struct {
 	// 插件
 	Plugins map[string]struct{}
 
+	Method string
+
 	req  reflect.Type
 	resp reflect.Type
 }
@@ -43,7 +45,11 @@ func (r *Router) RespI() (interface{}, error) {
 	return reflect.New(r.resp).Interface(), nil
 }
 
-func Register(serverName, endpoint, path string, plugins []string, req interface{}, resp interface{}) {
+func GetAllRouter() map[string]*Router {
+	return m
+}
+
+func Register(serverName, endpoint, path, method string, plugins []string, req interface{}, resp interface{}) {
 	var reqType reflect.Type
 	var respType reflect.Type
 	if req != nil {
@@ -75,6 +81,7 @@ func Register(serverName, endpoint, path string, plugins []string, req interface
 		Path:       path,
 		req:        reqType,
 		resp:       respType,
+		Method:     method,
 		Plugins:    make(map[string]struct{}),
 	}
 	for _, v := range plugins {

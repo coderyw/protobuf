@@ -114,6 +114,8 @@ message Router{
   optional string router_path = 1;
   //插件
   repeated string plugins = 3;
+  // http method
+  optional string method = 4;
 }
 
 extend google.protobuf.MessageOptions {
