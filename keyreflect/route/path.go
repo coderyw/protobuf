@@ -24,7 +24,7 @@ type Router struct {
 	// 路由path
 	Path string
 	// 插件
-	Plugins map[string]struct{}
+	Plugins []string
 
 	Method string
 
@@ -82,12 +82,9 @@ func Register(serverName, endpoint, path, method string, plugins []string, req i
 		req:        reqType,
 		resp:       respType,
 		Method:     method,
-		Plugins:    make(map[string]struct{}),
+		Plugins:    make([]string, len(plugins)),
 	}
-	for _, v := range plugins {
-		r.Plugins[v] = struct{}{}
-	}
-
+	copy(r.Plugins, plugins)
 	m[path] = r
 }
 
