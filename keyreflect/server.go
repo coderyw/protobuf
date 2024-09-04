@@ -122,7 +122,7 @@ func prepareEndpoint(method reflect.Method) *methodType {
 	return &methodType{method: method, ArgType: argType, ReplyType: replyType, ContextType: contextType}
 }
 
-func (server *rServer) register(rcvr interface{}) error {
+func (server *rServer) register(handname string, rcvr interface{}) error {
 	server.mu.Lock()
 	defer server.mu.Unlock()
 	if server.serviceMap == nil {
@@ -131,19 +131,20 @@ func (server *rServer) register(rcvr interface{}) error {
 	s := new(service)
 	s.typ = reflect.TypeOf(rcvr)
 	s.rcvr = reflect.ValueOf(rcvr)
-	sname := reflect.Indirect(s.rcvr).Type().Name()
-	if sname == "" {
-		log.Fatalf("rpc: no service name for type %v", s.typ.String())
+	//sname := reflect.Indirect(s.rcvr).Type().Name()
+	//sname := s.rcvr.Type().Name()
+	//if sname == "" {
+	//	log.Fatalf("rpc: no service name for type %v", s.typ.String())
+	//}
+	//if !isExported(sname) {
+	//	s := "rpc Register: type " + sname + " is not exported"
+	//	log.Info(s)
+	//	return errors.New(s)
+	//}
+	if _, present := server.serviceMap[handname]; present {
+		return errors.New("rpc: service already defined: " + handname)
 	}
-	if !isExported(sname) {
-		s := "rpc Register: type " + sname + " is not exported"
-		log.Info(s)
-		return errors.New(s)
-	}
-	if _, present := server.serviceMap[sname]; present {
-		return errors.New("rpc: service already defined: " + sname)
-	}
-	s.name = sname
+	s.name = handname
 	s.method = make(map[string]*methodType)
 
 	// Install the methods
@@ -155,7 +156,7 @@ func (server *rServer) register(rcvr interface{}) error {
 	}
 
 	if len(s.method) == 0 {
-		s := "rpc Register: type " + sname + " has no exported methods of suitable type"
+		s := "rpc Register: type " + handname + " has no exported methods of suitable type"
 		log.Info(s)
 		return errors.New(s)
 	}

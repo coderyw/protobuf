@@ -13,8 +13,8 @@ import (
 	"strings"
 )
 
-func RegisterGinRouter(handler interface{}) error {
-	return rs.register(handler)
+func RegisterGinRouter(handname string, handler interface{}) error {
+	return rs.register(handname, handler)
 }
 
 func GinRouterHandler(ctx context.Context, endpoint string, decode func(interface{}) error) (interface{}, error) {
