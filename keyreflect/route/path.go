@@ -25,6 +25,8 @@ type Router struct {
 	Path string
 	// 插件
 	Plugins []string
+	// 后置插件
+	After []string
 
 	Method string
 
@@ -49,7 +51,7 @@ func GetAllRouter() map[string]*Router {
 	return m
 }
 
-func Register(serverName, endpoint, path, method string, plugins []string, req interface{}, resp interface{}) {
+func Register(serverName, endpoint, path, method string, plugins []string, req interface{}, resp interface{}, after ...string) {
 	var reqType reflect.Type
 	var respType reflect.Type
 	if req != nil {
@@ -83,8 +85,10 @@ func Register(serverName, endpoint, path, method string, plugins []string, req i
 		resp:       respType,
 		Method:     method,
 		Plugins:    make([]string, len(plugins)),
+		After:      make([]string, len(after)),
 	}
 	copy(r.Plugins, plugins)
+	copy(r.After, after)
 	m[path] = r
 }
 

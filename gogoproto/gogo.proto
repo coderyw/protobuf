@@ -116,6 +116,8 @@ message Router{
   repeated string plugins = 3;
   // http method
   optional string method = 4;
+  // 后置插件
+  repeated string after = 5;
 }
 
 extend google.protobuf.MessageOptions {
