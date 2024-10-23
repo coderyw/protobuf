@@ -1571,6 +1571,28 @@ func (g *Generator) generateEnum(enum *EnumDescriptor) {
 		}
 		g.Out()
 		g.P("}")
+
+		g.P("var ", ccTypeName, "AliasValue = map[string]int32{")
+		g.In()
+		generatedStr := make(map[string]bool) // avoid duplicate values
+		for _, e := range enum.Value {
+			duplicate := ""
+			str := ""
+
+			if gogoproto.IsEnumAliasCustomName(e) {
+				str = strconv.Quote(gogoproto.GetEnumAliasCustomName(e))
+			} else {
+				str = strconv.Quote(*e.Name)
+			}
+
+			if _, present := generatedStr[str]; present {
+				duplicate = "// Duplicate value: "
+			}
+			g.P(duplicate, str, ": ", e.Number, ",")
+			generatedStr[str] = true
+		}
+		g.Out()
+		g.P("}")
 	}
 
 	if gogoproto.EnabledGoEnumEqual(enum.file.FileDescriptorProto, enum.EnumDescriptorProto) {
