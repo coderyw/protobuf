@@ -341,7 +341,7 @@ func (g *grpc) generateClientSignature(servName string, method *pb.MethodDescrip
 		methName += "_"
 	}
 	reqArg := ", in *" + g.typeName(method.GetInputType())
-	g.P("// reqArg ", reqArg)
+	//g.P("// reqArg ", reqArg)
 
 	if method.GetClientStreaming() {
 		reqArg = ""
@@ -350,7 +350,7 @@ func (g *grpc) generateClientSignature(servName string, method *pb.MethodDescrip
 	if method.GetServerStreaming() || method.GetClientStreaming() {
 		respName = servName + "_" + generator.CamelCase(origMethName) + "Client"
 	}
-	g.P("// respName ", respName)
+	//g.P("// respName ", respName)
 	return fmt.Sprintf("%s(ctx %s.Context%s, opts ...%s.CallOption) (%s, error)", methName, contextPkg, reqArg, grpcPkg, respName)
 }
 
@@ -366,7 +366,7 @@ func (g *grpc) generateRoutePath(servName, fullServName string, method *pb.Metho
 			methName += "_"
 		}
 		reqArg := g.typeName(method.GetInputType())
-		g.P("// reqArg ", reqArg)
+		//g.P("// reqArg ", reqArg)
 
 		if method.GetClientStreaming() {
 			reqArg = ""
@@ -375,7 +375,7 @@ func (g *grpc) generateRoutePath(servName, fullServName string, method *pb.Metho
 		if method.GetServerStreaming() || method.GetClientStreaming() {
 			respName = servName + "_" + generator.CamelCase(origMethName) + "Client"
 		}
-		g.P("// respName ", respName)
+		//g.P("// respName ", respName)
 
 		var s string = fmt.Sprintf("[]string{")
 		for _, v := range val.Plugins {
