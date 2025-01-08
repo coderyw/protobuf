@@ -32,12 +32,11 @@ func GinRouterHandler(ctx context.Context, endpoint string, decode func(interfac
 	if err != nil {
 		return nil, err
 	}
-	rs.mu.Lock()
-	service := rs.serviceMap[serviceName]
-	rs.mu.Unlock()
-	if service == nil {
+	serviceM, ok := rs.serviceMap.Load(serviceName)
+	if !ok {
 		return nil, fmt.Errorf("unknown router service:%v", serviceName)
 	}
+	service := serviceM.(*service)
 	mtype := service.method[methodName]
 	if mtype == nil {
 		return nil, fmt.Errorf("unknown service %s.%s", serviceName, methodName)

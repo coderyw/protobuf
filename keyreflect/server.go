@@ -22,8 +22,7 @@ var (
 	typeOfError = reflect.TypeOf((*error)(nil)).Elem()
 
 	rs *rServer = &rServer{
-		mu:         sync.Mutex{},
-		serviceMap: make(map[string]*service),
+		serviceMap: sync.Map{},
 	}
 )
 
@@ -43,8 +42,7 @@ type service struct {
 
 // server represents an RPC Server.
 type rServer struct {
-	mu         sync.Mutex // protects the serviceMap
-	serviceMap map[string]*service
+	serviceMap sync.Map
 }
 
 // Is this an exported - upper case - name?
@@ -123,11 +121,11 @@ func prepareEndpoint(method reflect.Method) *methodType {
 }
 
 func (server *rServer) register(handname string, rcvr interface{}) error {
-	server.mu.Lock()
-	defer server.mu.Unlock()
-	if server.serviceMap == nil {
-		server.serviceMap = make(map[string]*service)
-	}
+	//server.mu.Lock()
+	//defer server.mu.Unlock()
+	//if server.serviceMap == nil {
+	//	server.serviceMap = make(map[string]*service)
+	//}
 	s := new(service)
 	s.typ = reflect.TypeOf(rcvr)
 	s.rcvr = reflect.ValueOf(rcvr)
@@ -141,7 +139,7 @@ func (server *rServer) register(handname string, rcvr interface{}) error {
 	//	log.Info(s)
 	//	return errors.New(s)
 	//}
-	if _, present := server.serviceMap[handname]; present {
+	if _, present := server.serviceMap.Load(handname); present {
 		return errors.New("rpc: service already defined: " + handname)
 	}
 	s.name = handname
@@ -160,7 +158,7 @@ func (server *rServer) register(handname string, rcvr interface{}) error {
 		log.Info(s)
 		return errors.New(s)
 	}
-	server.serviceMap[s.name] = s
+	server.serviceMap.Store(s.name, s)
 	return nil
 }
 
