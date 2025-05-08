@@ -29,6 +29,8 @@ type Router struct {
 	After []string
 
 	Method string
+	// 是否需要使用默认的消息回复组件
+	WithDefaultResp bool
 
 	req  reflect.Type
 	resp reflect.Type
@@ -51,7 +53,7 @@ func GetAllRouter() map[string]*Router {
 	return m
 }
 
-func Register(serverName, endpoint, path, method string, plugins []string, req interface{}, resp interface{}, after ...string) {
+func Register(serverName, endpoint, path, method string, plugins []string, req interface{}, resp interface{}, withDefaultResp bool, after ...string) {
 	var reqType reflect.Type
 	var respType reflect.Type
 	if req != nil {
@@ -78,14 +80,15 @@ func Register(serverName, endpoint, path, method string, plugins []string, req i
 	}
 
 	r := &Router{
-		ServerName: serverName,
-		Endpoint:   endpoint,
-		Path:       path,
-		req:        reqType,
-		resp:       respType,
-		Method:     method,
-		Plugins:    make([]string, len(plugins)),
-		After:      make([]string, len(after)),
+		ServerName:      serverName,
+		Endpoint:        endpoint,
+		Path:            path,
+		req:             reqType,
+		resp:            respType,
+		Method:          method,
+		WithDefaultResp: withDefaultResp,
+		Plugins:         make([]string, len(plugins)),
+		After:           make([]string, len(after)),
 	}
 	copy(r.Plugins, plugins)
 	copy(r.After, after)

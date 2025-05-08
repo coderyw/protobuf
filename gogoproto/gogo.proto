@@ -118,6 +118,9 @@ message Router{
   optional string method = 4;
   // 后置插件
   repeated string after = 5;
+  // 是否需要使用默认的消息回复组件
+  optional bool with_default_resp = 6;
+
 }
 
 extend google.protobuf.MessageOptions {
